@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta name="viewport" content="width=100%; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;" />
+    <link rel="icon" href="images/favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png" />
+    <title>排行</title>
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link href="css/prettyPhoto.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="js/jquery.quicksand.js"></script>
+    <script type="text/javascript" src="js/superfish.js"></script>
+    <script type="text/javascript" src="js/hoverIntent.js"></script>
+    <script type="text/javascript" src="js/jquery.hoverdir.js"></script>
+    <script type="text/javascript" src="js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="js/jflickrfeed.min.js"></script>
+    <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="js/jquery.elastislide.js"></script>
+    <script type="text/javascript" src="js/jquery.tweet.js"></script>
+    <script type="text/javascript" src="js/smoothscroll.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.totop.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/ajax-mail.js"></script>
+    <script type="text/javascript" src="js/accordion.settings.js"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <link href="css/ie.css" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+    <!-- header -->
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="span4 logo">
+                    <a href="./index.html">
+                        <img src="images/logo.png" alt="logo" />
+                    </a>
+                </div>
+                <div class="span8 hidden-phone"></div>
+            </div>
+            <nav id="menu">
+                <ul class="clearfix">
+                    <li><a href="./index.html" class="current">首页</a>
+                    </li>
+                    <li><a href="./hot.html">热门</a>
+                    </li>
+                    <li><a href="./classify.html">分类</a>
+                    </li>
+                    <li><a href="./rank.html">榜单</a>
+                    </li>
+                    <li><a href="./group.html">圈子</a></li>
+                        <li><a href="./about.html">关于我们</a>
+                        </li>
+                        <li>
+                            <form id="search" class="input-append" />
+
+                            <input class="" id="appendedInputButton" size="16" type="text" value="搜索..." name="search site" onFocus="if(this.value=='Search...') this.value=''" onBlur="if(this.value=='') this.value='...'" />
+                            <input class="btn search-bt" type="submit" name="submit" value="" />
+                            </form>
+                        </li>
+                        <li>
+                            <a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;margin-left:210px;"> <i class="icon-user icon-white"></i><font id="nav_nickname"> 登录 </font> 
+                            </a>
+                        </li>
+                    </li>
+                    <li>
+                        <a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;">
+                            </i><font id="nav_nickname"> 注册</font> 
+                        </a>
+                    </li>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!--login-->
+    <div class="modal hide" id="login1"> <a href="#" class="close" data-dismiss="modal">关闭*</a>
+        <form>
+            <div class="modal-header">
+                <h3>用户登录</h3>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <label class="control-label" for="user">用户名</label>
+                    <div class="controls">
+                        <input id="user" type="text" placeholder="输入用户名" class="span3">
+                        <!-- palceholder用于文本框中显示提示性字体-->
+                        <p class="help-blaock">在这里输入用户名</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">密码</label>
+                    <div class="controls">
+                        <input id="user" type="text" placeholder="输入密码" class="span3">
+                        <!-- palceholder用于文本框中显示提示性字体-->
+                        <p class="help-blaock">在这里输入密码</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">登录</button>
+            </div>
+        </div>
+    </div>
+
+    <!--register-->
+    <div class="modal hide" id="register1"> <a href="#" class="close" data-dismiss="modal">关闭*</a>
+        <form>
+            <div class="modal-header">
+                <h3>新用户注册</h3>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <label class="control-label" for="user">用户名</label>
+                    <div class="controls">
+                        <input id="user" type="text" placeholder="输入用户名" class="span3">
+                        <!-- palceholder用于文本框中显示提示性字体-->
+                        <p class="help-blaock">在这里输入用户名</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">密码</label>
+                    <div class="controls">
+                        <input id="user" type="text" placeholder="输入密码" class="span3">
+                        <!-- palceholder用于文本框中显示提示性字体-->
+                        <p class="help-blaock">在这里输入密码</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">确认密码</label>
+                    <div class="controls">
+                        <input id="user" type="text" placeholder="输入新密码" class="span3">
+                        <!-- palceholder用于文本框中显示提示性字体-->
+                        <p class="help-blaock">在这里确认密码</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">完成</button>
+            </div>
+        </div>
+    </div>
+    <!-- container -->
+    <section id="container">
+        <div class="container">
+            <div class="row span12">
+
+
+                <!-- page content -->
+                <section id="page-sidebar" class="alignright span12">
+                    <!-- Our Services -->
+                    <div class="row">
+                        <div class="span12">
+                            <div class="title-divider">
+                                <h3>影视排行榜</h3>
+                                <div class="divider-arrow"></div>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="block-grey">
+                                <div class="block-light wrap15">
+                                    <div class="tagline">
+                                        <h3>hao123电影排行榜top10</h3>
+                                    </div>
+                                    <ol class="sty">
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+                                        <li><a href="#">Phasellus porta. Fusce suscipit</a>
+                                        </li>
+                                        <li><a href="#">Nulla dui. Fusce feugiat</a>
+                                        </li>
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+                                        <li><a href="#">Phasellus porta. Fusce suscipit</a>
+                                        </li>
+                                        <li><a href="#">Nulla dui. Fusce feugiat</a>
+                                        </li>
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="block-grey">
+                                <div class="block-light wrap15">
+                                    <div class="tagline">
+                                        <h3>IMDB电影排行榜top10</h3>
+                                    </div>
+                                    <ol class="list-1">
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+                                        <li><a href="#">Phasellus porta. Fusce suscipit</a>
+                                        </li>
+                                        <li><a href="#">Nulla dui. Fusce feugiat</a>
+                                        </li>
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+                                        <li><a href="#">Phasellus porta. Fusce suscipit</a>
+                                        </li>
+                                        <li><a href="#">Nulla dui. Fusce feugiat</a>
+                                        </li>
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="block-grey">
+                                <div class="block-light wrap15">
+                                    <div class="tagline">
+                                        <h3>豆瓣电影排行榜top10</h3>
+                                    </div>
+                                    <ol>
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+                                        <li><a href="#">Phasellus porta. Fusce suscipit</a>
+                                        </li>
+                                        <li><a href="#">Nulla dui. Fusce feugiat</a>
+                                        </li>
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+                                        <li><a href="#">Phasellus porta. Fusce suscipit</a>
+                                        </li>
+                                        <li><a href="#">Nulla dui. Fusce feugiat</a>
+                                        </li>
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="block-grey">
+                                <div class="block-light wrap15">
+                                    <div class="tagline">
+                                        <h3>时光网电影排行榜top10</h3>
+                                    </div>
+                                    <ol>
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+                                        <li><a href="#">Phasellus porta. Fusce suscipit</a>
+                                        </li>
+                                        <li><a href="#">Nulla dui. Fusce feugiat</a>
+                                        </li>
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+                                        <li><a href="#">Phasellus porta. Fusce suscipit</a>
+                                        </li>
+                                        <li><a href="#">Nulla dui. Fusce feugiat</a>
+                                        </li>
+                                        <li><a href="#">Praesent vestibulum molestie</a>
+                                        </li>
+                                        <li><a href="#">Aenean nonummy hendrerit mauris</a>
+                                        </li>
+
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr />
+                </section>
+            </div>
+    </section>
+    <!--footer-->
+    <div class="container" style="background-color:#990">
+        <footer id="footer">
+            <div class="span12">
+                <section id="footer-menu span12 aligncenter">
+                    <div class="container">
+                        <div class="span12 aligncenter">
+                            <p class="span12 aligncenter">
+                                <h2><span>&copy; Copyright 2014, <span class="color2">We Are Coming</span> | All Rights Reserved</span></h2>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </footer>
+    </div>
+    <script>
+        $("a[rel=tooltip]").tooltip()
+         $("a[rel=popover]").popover()
+    </script>
+</body>
+
+</html>
