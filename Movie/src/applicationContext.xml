@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url" value="jdbc:mysql://localhost:3306/mydb"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="1234"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/myfilm/data/Type.hbm.xml</value>
+				<value>com/myfilm/data/Download.hbm.xml</value>
+				<value>com/myfilm/data/FilmUser.hbm.xml</value>
+				<value>com/myfilm/data/FilmActor.hbm.xml</value>
+				<value>com/myfilm/data/Film.hbm.xml</value>
+				<value>com/myfilm/data/FilmPrize.hbm.xml</value>
+				<value>com/myfilm/data/Viewlink.hbm.xml</value>
+				<value>com/myfilm/data/User.hbm.xml</value>
+				<value>com/myfilm/data/Actor.hbm.xml</value>
+				<value>com/myfilm/data/Boxoffice.hbm.xml</value>
+				<value>com/myfilm/data/Group.hbm.xml</value>
+				<value>com/myfilm/data/FilmPlace.hbm.xml</value>
+				<value>com/myfilm/data/FilmType.hbm.xml</value>
+				<value>com/myfilm/data/Prize.hbm.xml</value>
+				<value>com/myfilm/data/Place.hbm.xml</value>
+				<value>com/myfilm/data/Comment.hbm.xml</value>
+				<value>com/myfilm/data/FilmGroup.hbm.xml</value>
+				<value>com/myfilm/data/Photo.hbm.xml</value>
+				<value>com/myfilm/data/FilmBoxoffice.hbm.xml</value>
+				<value>com/myfilm/data/UserGroup.hbm.xml</value>
+				<value>com/myfilm/data/GroupComment.hbm.xml</value></list>
+		</property></bean>
+	<bean id="TypeDAO" class="com.myfilm.data.TypeDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="DownloadDAO" class="com.myfilm.data.DownloadDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="FilmUserDAO" class="com.myfilm.data.FilmUserDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="FilmActorDAO" class="com.myfilm.data.FilmActorDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="FilmDAO" class="com.myfilm.data.FilmDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="FilmPrizeDAO" class="com.myfilm.data.FilmPrizeDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="ViewlinkDAO" class="com.myfilm.data.ViewlinkDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="UserDAO" class="com.myfilm.data.UserDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="ActorDAO" class="com.myfilm.data.ActorDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="BoxofficeDAO" class="com.myfilm.data.BoxofficeDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="GroupDAO" class="com.myfilm.data.GroupDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="FilmPlaceDAO" class="com.myfilm.data.FilmPlaceDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="FilmTypeDAO" class="com.myfilm.data.FilmTypeDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="PrizeDAO" class="com.myfilm.data.PrizeDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="PlaceDAO" class="com.myfilm.data.PlaceDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="CommentDAO" class="com.myfilm.data.CommentDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="FilmGroupDAO" class="com.myfilm.data.FilmGroupDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="PhotoDAO" class="com.myfilm.data.PhotoDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="FilmBoxofficeDAO"
+		class="com.myfilm.data.FilmBoxofficeDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="UserGroupDAO" class="com.myfilm.data.UserGroupDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="FilmService" class="com.myfilm.service.FilmServiceImpl">
+	 <property name="filmDao" ref="FilmDAO"></property>
+	</bean>
+
+	
+	<bean id="GroupCommentDAO"
+		class="com.myfilm.data.GroupCommentDAO">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean></beans>
