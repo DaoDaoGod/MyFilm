@@ -3,8 +3,9 @@ package com.myfilm.bean;
 import java.util.Date;
 import java.util.Set;
 
-public class FilmBean {
+import com.myfilm.data.Photo;
 
+public class FilmBean {
 	public int getFilmId() {
 		return filmId;
 	}
@@ -33,6 +34,11 @@ public class FilmBean {
 	private int filmId;
 	private String name;
 	private String description;
-	
-	
+	private Set<Photo> photoset;
+	public Set<Photo> getPhotoset() {
+		return photoset;
+	}
+	public void setPhotoset(Set<Photo> photoset) {
+		this.photoset = photoset;
+	} 
 }

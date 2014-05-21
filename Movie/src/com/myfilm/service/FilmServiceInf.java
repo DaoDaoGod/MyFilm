@@ -7,4 +7,5 @@ import com.myfilm.data.Film;
 
 public interface FilmServiceInf {
   public List<FilmBean> getHotMovie();
+  public List<FilmBean> getHotMovieByPage(int pagenum);
 }

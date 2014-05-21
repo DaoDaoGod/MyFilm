@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta name="viewport" content="width=100%; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;" />
+<link rel="icon" href="images/favicon.png" type="image/png" />
+<link rel="shortcut icon" href="images/favicon.png" type="image/png" />
+<title>影片信息及下载</title>
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/prettyPhoto.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/jquery.quicksand.js"></script>
+<script type="text/javascript" src="js/superfish.js"></script>
+<script type="text/javascript" src="js/hoverIntent.js"></script>
+<script type="text/javascript" src="js/jquery.hoverdir.js"></script>
+<script type="text/javascript" src="js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="js/jflickrfeed.min.js"></script>
+<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="js/jquery.elastislide.js"></script>
+<script type="text/javascript" src="js/jquery.tweet.js"></script>
+<script type="text/javascript" src="js/smoothscroll.js"></script>
+<script type="text/javascript" src="js/jquery.ui.totop.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/ajax-mail.js"></script>
+<script type="text/javascript" src="js/accordion.settings.js"></script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <link href="css/ie.css" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<!-- header -->
+<header id="header">
+  <div class="container">
+    <div class="row">
+      <div class="span4 logo"> <a href="./index.html"><img src="images/logo.png" alt="logo" /></a> </div>
+      <div class="span8 hidden-phone"></div>
+    </div>
+    <nav id="menu">
+      <ul class="clearfix">
+        <li><a href="./index.html">首页</a></li>
+        <li><a href="./portfolio2.html">分类</a>
+          <ul>
+            <li><a href="./portfolio2.html">大陆</a>
+              <ul>
+                <li><a href="./portfolio2.html">校园</a></li>
+                <li class="last"><a href="./portfolio2ex.html">穿越</a></li>
+              </ul>
+            </li>
+            <li><a href="./portfolio3.html">港台</a>
+              <ul>
+                <li><a href="./portfolio3.html">动作</a></li>
+                <li class="last"><a href="./portfolio3ex.html">言情</a></li>
+              </ul>
+            </li>
+            <li class="last"><a href="./portfolio4.html">境外</a>
+              <ul>
+                <li><a href="./portfolio4.html">欧美</a></li>
+                <li class="last"><a href="./portfolio4ex.html">日韩</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="./hot.html">热门</a>
+          <ul>
+            <li class="last"><a href="./blog-single.html" class="current">影片信息</a></li>
+          </ul>
+        </li>
+        <li><a href="./contact.html">影评专区</a></li>
+        <li><a href="./services.html">票房</a></li>
+        <li><a href="./service2.html">排行</a></li>
+        <li><a href="./about.html">关于我们</a></li>
+        <li>
+          <form id="search" class="input-append" />
+          
+          <input class="" id="appendedInputButton" size="16" type="text" value="搜索..." name="search site" onFocus="if(this.value=='Search...') this.value=''" onBlur="if(this.value=='') this.value='...'" />
+          <input class="btn search-bt" type="submit" name="submit" value="" />
+          </form>
+        </li>
+        <li><a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;"> <i class="icon-user icon-white"></i><font id="nav_nickname"> 登录 </font> </a></li>
+        </li>
+        <li><a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;"></i><font id="nav_nickname"> 注册</font> </a></li>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!--login-->
+<div class="modal hide" id="login1"> <a href="#" class="close" data-dismiss="modal">关闭*</a>
+  <form>
+    <div class="modal-header">
+      <h3>用户登录</h3>
+    </div>
+    <div class="modal-body">
+      <div class="control-group">
+        <label class="control-label" for="user">用户名</label>
+        <div class="controls">
+          <input id="user" type="text" placeholder="输入用户名" class="span3">
+          <!-- palceholder用于文本框中显示提示性字体-->
+          <p class="help-blaock">在这里输入用户名</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"for="user">密码</label>
+        <div class="controls">
+          <input id="user" type="text" placeholder="输入密码" class="span3">
+          <!-- palceholder用于文本框中显示提示性字体-->
+          <p class="help-blaock">在这里输入密码</p>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="modal-footer">
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">登录</button>
+    </div>
+  </div>
+</div>
+<!--register-->
+<div class="modal hide" id="register1"> <a href="#" class="close" data-dismiss="modal">关闭*</a>
+  <form>
+    <div class="modal-header">
+      <h3>新用户注册</h3>
+    </div>
+    <div class="modal-body">
+      <div class="control-group">
+        <label class="control-label" for="user">用户名</label>
+        <div class="controls">
+          <input id="user" type="text" placeholder="输入用户名" class="span3">
+          <!-- palceholder用于文本框中显示提示性字体-->
+          <p class="help-blaock">在这里输入用户名</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"for="user">密码</label>
+        <div class="controls">
+          <input id="user" type="text" placeholder="输入密码" class="span3">
+          <!-- palceholder用于文本框中显示提示性字体-->
+          <p class="help-blaock">在这里输入密码</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"for="user">确认密码</label>
+        <div class="controls">
+          <input id="user" type="text" placeholder="输入新密码" class="span3">
+          <!-- palceholder用于文本框中显示提示性字体-->
+          <p class="help-blaock">在这里确认密码</p>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="modal-footer">
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">完成</button>
+    </div>
+  </div>
+</div>
+<!-- container -->
+<section id="container">
+<div class="container">
+<div class="row">
+<div class="span12">
+<div class="title-divider">
+      <h3>影片信息</h3>
+      <div class="divider-arrow"></div>
+    </div>
+<div class="row">
+<!-- page content -->
+<section id="page-sidebar" class="alignleft span8">
+<!-- content -->
+<div class="clear"></div>
+<div class="container">
+<div class="row">
+<div class="span8">
+  <div class="row">
+    
+    <article class="blog-post span8">
+    <div class="block-grey">
+      <div class="block-light">
+        <div class="wrapper-img"><a href="./portfolio2.html" ><img src="example/slider1.jpg" alt="photo" /></a> </div>
+        <div class="wrapper">
+          <h2 class="post-title"><a href="#">同桌的妳</a></h2>
+          <a href="#" class="blog-comments">3</a>
+          <p>1993年的夏天，文静秀气、戴着一副小孔眼镜的转校生周小栀（周冬雨饰），第一次见到了自己的同桌——坐在最后一排的捣蛋男生林一（林更新饰），他们一起经历了初中、高中和大学的青葱岁月。林一对周小栀说：“总有一天，我会带你去一个只有我们俩的地方。”一晃十年……</p>
+          <blockquote>
+            <p>1993年的夏天，文静秀气、戴着一副小孔眼镜的转校生周小栀（周冬雨饰），第一次见到了自己的同桌——坐在最后一排的捣蛋男生林一（林更新饰），他们一起经历了初中、高中和大学的青葱岁月。林一对周小栀说：“总有一天，我会带你去一个只有我们俩的地方。</p>
+          </blockquote>
+          <p>1993年的夏天，文静秀气、戴着一副小孔眼镜的转校生周小栀（周冬雨饰），第一次见到了自己的同桌——坐在最后一排的捣蛋男生林一（林更新饰），他们一起经历了初中、高中和大学的青葱岁月。林一对周小栀说：“总有一天，我会带你去一个只有我们俩的地方。</p>
+          <p class="tags">Tags:<a href="#">Science</a>,<a href="#">Technology</a>,<a href="#">News</a></p>
+          <hr />
+          <!--commetns form-->
+          <div class="title-divider">
+            <h3>下载资源列表</h3>
+            <div class="divider-arrow"></div>
+            <div class="container">
+              <h4>同桌的你 的资源列表</h4>
+              <table class="table">
+                <tr>
+                  <td class="x-item"><div> <a class="title" href="/info/6c83ae9323eb9165ee4b6e37b144fa818b079252">【寻找同桌的你】【高清1280版HD-RMVB.国语中字】【2014中国剧情爱情大片】</a> <span class="ctime">3天前</span> </div>
+                    <div class="files">
+                      <ul>
+                        <li>【寻找同桌的你.Looking at Classmate】【高清1280版HD-RMVB.国语中字】.rmvb  516.1 MB</li>
+                        <li>....</li>
+                      </ul>
+                    </div>
+                    <div class="tail"> 文件数：1 大小：516.1 MB  热度：41 速度：<span style="color: green; font-weight:bold;">非常快</span> &nbsp; &nbsp; <a class="title" href="magnet:?xt=urn:btih:6c83ae9323eb9165ee4b6e37b144fa818b079252&amp;dn=%E3%80%90%E5%AF%BB%E6%89%BE%E5%90%8C%E6%A1%8C%E7%9A%84%E4%BD%A0%E3%80%91%E3%80%90%E9%AB%98%E6%B8%851280%E7%89%88HD-RMVB.%E5%9B%BD%E8%AF%AD%E4%B8%AD%E5%AD%97%E3%80%91%E3%80%902014%E4%B8%AD%E5%9B%BD%E5%89%A7%E6%83%85%E7%88%B1%E6%83%85%E5%A4%A7%E7%89%87%E3%80%91">磁力链接</a> </div></td>
+                </tr>
+                <tr>
+                  <td class="x-item"><div> <a class="title" href="/info/c0a49d84800b366b018e50cf77bc6d209b4dd16f">2011春晚小品[同桌的你]表演赵本山 小沈阳 王小利[江海互动论坛www.70king.com].rmvb</a> <span class="ctime">3年前</span> </div>
+                    <div class="files">
+                      <ul>
+                        <li>2011春晚小品[同桌的你]表演赵本山 小沈阳 王小利[江海互动论坛www.70king.com].rmvb  307.8 MB</li>
+                      </ul>
+                    </div>
+                    <div class="tail"> 文件数：1 大小：307.8 MB  热度：19 速度：<span style="color: orange; font-weight:bold;">一般</span> &nbsp; &nbsp; <a class="title" href="magnet:?xt=urn:btih:c0a49d84800b366b018e50cf77bc6d209b4dd16f&amp;dn=2011%E6%98%A5%E6%99%9A%E5%B0%8F%E5%93%81%5B%E5%90%8C%E6%A1%8C%E7%9A%84%E4%BD%A0%5D%E8%A1%A8%E6%BC%94%E8%B5%B5%E6%9C%AC%E5%B1%B1%20%E5%B0%8F%E6%B2%88%E9%98%B3%20%E7%8E%8B%E5%B0%8F%E5%88%A9%5B%E6%B1%9F%E6%B5%B7%E4%BA%92%E5%8A%A8%E8%AE%BA%E5%9D%9Bwww.70king.com%5D.rmvb">磁力链接</a> </div></td>
+                </tr>
+                <tr>
+                  <td class="x-item"><div> <a class="title" href="/info/02861f32b4d582098741c3b367aa7bdec17bb1b6">【开心家园】重拾难忘的记忆 现代流淌的歌声7 《同桌的你》[APE]</a> <span class="ctime">5年前</span> </div>
+                    <div class="files">
+                      <ul>
+                        <li>【开心家园】重拾难忘的记忆 现代流淌的歌声7 《同桌的你》.ape  374.4 MB</li>
+                        <li>07a.jpg  364.7 KB</li>
+                        <li>07.jpg  331.6 KB</li>
+                        <li>....</li>
+                      </ul>
+                    </div>
+                    <div class="tail"> 文件数：11 大小：377.3 MB  热度：2 速度：<span style="color: orange; font-weight:bold;">一般</span> &nbsp; &nbsp; <a class="title" href="magnet:?xt=urn:btih:02861f32b4d582098741c3b367aa7bdec17bb1b6&amp;dn=%E3%80%90%E5%BC%80%E5%BF%83%E5%AE%B6%E5%9B%AD%E3%80%91%E9%87%8D%E6%8B%BE%E9%9A%BE%E5%BF%98%E7%9A%84%E8%AE%B0%E5%BF%86%20%E7%8E%B0%E4%BB%A3%E6%B5%81%E6%B7%8C%E7%9A%84%E6%AD%8C%E5%A3%B07%20%E3%80%8A%E5%90%8C%E6%A1%8C%E7%9A%84%E4%BD%A0%E3%80%8B%5BAPE%5D">磁力链接</a> </div></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      </article>
+    </div>
+  </div>
+  <div class="span4">
+    <aside id="sidebar" class="alignleftt span4">
+     <div class="title-divider">
+      <div class="divider-arrow"></div>
+      <strong><h3>同桌的你</h3></strong>
+     
+    </div>
+    <!-- Tabs -->
+    <table class="table table-condensed table-striped table-bordered"  style="margin-bottom:200px;margin-top:6px;">
+      <tr>
+        <td class="span2"><span class="x-m-label">导演</span></td>
+        <!-- <td> 弗朗西斯·劳伦斯 </td>-->
+        <td><a href="http://www.baidu.com/s?usm=7&f=0&wd=郭帆&ie=utf-8&rsv_dl=0_left_hotmovie_20294">郭帆</a></td>
+      </tr>
+      <tr>
+        <td class="span2"><span class="x-m-label">主演</span></td>
+        <!-- <td> 詹妮弗·劳伦斯 / 乔什·哈切森 / 利亚姆·海姆斯沃斯 / 伍迪·哈里森 / 伊丽莎白·班克斯 </td>-->
+        <td><a href="http://www.baidu.com/s?usm=7&f=0&wd=林更新&ie=utf-8&rsv_dl=0_left_hotmovie_20294">林更新</a> / <a href="http://www.baidu.com/s?usm=7&f=0&wd=周冬雨&ie=utf-8&rsv_dl=0_left_hotmovie_20294">周冬雨</a> / <a href="/category/key_%E5%88%A9%E4%BA%9A%E5%A7%86%C2%B7%E6%B5%B7%E5%A7%86%E6%96%AF%E6%B2%83%E6%96%AF"> 隋凯</a> / <a href="/category/key_%E4%BC%8D%E8%BF%AA%C2%B7%E5%93%88%E9%87%8C%E6%A3%AE">  王啸坤 </a> / <a href="/category/key_%E4%BC%8A%E4%B8%BD%E8%8E%8E%E7%99%BD%C2%B7%E7%8F%AD%E5%85%8B%E6%96%AF"> 龚格尔</a></td>
+      </tr>
+      <tr>
+        <td class="span2"><span class="x-m-label">类型</span></td>
+        <!-- <td> 动作 / 科幻 / 惊悚 / 冒险 </td>-->
+        <td><a href="/category/genre_%E5%8A%A8%E4%BD%9C">青春</a> / <a href="/category/genre_%E7%A7%91%E5%B9%BB"> 成长</a> / <a href="/category/genre_%E6%83%8A%E6%82%9A"> 爱情</a> / <a href="/category/genre_%E5%86%92%E9%99%A9"> 校园</a></td>
+      </tr>
+      <tr>
+        <td class="span2"><span class="x-m-label">地区</span></td>
+        <!-- <td> 美国 </td>-->
+        <td><a href="/category/region_%E7%BE%8E%E5%9B%BD">中国</a></td>
+      </tr>
+      <tr>
+        <td class="span2"><span class="x-m-label">上映时间</span></td>
+        <!-- <td> 2013-11-21(中国大陆) / 2013-11-22(美国) / &lt;span property=&quot;v:initialReleaseDate&quot; content=&quot;2013-11-22(美国)&quot;&gt;2013-11-22(美国) </td>-->
+        <td>2014-4-25(中国大陆)  </td>
+      </tr>
+      <tr>
+        <td class="span2"><span class="x-m-label">片长</span></td>
+        <!-- <td> 146分钟 </td>-->
+        <td>146分钟 </td>
+      </tr>
+      <tr>
+        <td class="span2"><span class="x-m-label">别名</span></td>
+        <!-- <td> 饥饿游戏 第二部 / 燃烧的女孩 </td>-->
+        <td>同桌的你 </td>
+      </tr>
+      <tr class="x-m-rating">
+        <td class="span2"><span class="x-m-label">评分</span></td>
+        <td> 豆瓣： <a rel="nofollow" href="http://movie.douban.com/subject/6874456/" target="_blank" data-toggle="tooltip"
+class="x-tooltip" title="豆瓣上的信息"><span class="badge" style="color: green; font-weight: bold;">7.3</span></a> IMDB： <a rel="nofollow" href="http://www.imdb.com/title/tt1951264/" target="_blank" data-toggle="tooltip"
+class="x-tooltip" title="IMDB上的信息"> <span class="badge" style="color: orange; font-weight: bold;">7.8</span></a></td>
+      </tr>
+      <tr>
+      <td  colspan="2">
+      <div class="btn-group x-usermovie-controls">
+
+<a href="#" class="mark btn x-tooltip" title="标记为喜欢的电影" data-toggle="tooltip" data-id="5071af3890d7a909a3ff0b57" data-type="like">
+<i class="icon-heart"></i> <span>喜欢</span></a>
+
+
+<a href="#" class="mark btn x-tooltip" title="加入计划后可以获得资源更新的通知" data-toggle="tooltip" data-id="5071af3890d7a909a3ff0b57" data-type="plan">
+<i class="icon-time"></i> <span>计划</span></a>
+
+
+<a href="#" class="mark btn x-tooltip" title="标记为看过的电影" data-toggle="tooltip" data-id="5071af3890d7a909a3ff0b57" data-type="seen">
+<i class="icon-check"></i> <span>已看</span></a>
+
+</div>
+      </td>
+      </tr>
+      <tr>
+      <td colspan="2">
+      <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+      <a class="bds_tsina"></a>
+       <a class="bds_tqq"></a>
+          <a class="bds_renren"></a>
+      <a class="bds_douban"></a>
+        <a class="bds_qzone"></a>
+
+      </div>
+      </td>
+      </tr>
+      
+      <tr>
+      <td ><div class="span2">
+      <div class="x-m-subtitle">
+        <div style="float:left;"> <a id="li_ji_bo_fang" href="/one_key_play?id=5071af3890d7a909a3ff0b57" target="_blank" class="btn btn-large btn-primary" title="立即播放"> <i class="icon-white icon-play"></i> 立即播放 </a> </div>
+        <div style="float:left;margin-top:23px;margin-left:5px;"> <a id="more_movie_resource" style="cursor:pointer;" title="其他资源"> <span style="font-size:13px;"> 更多播放地址</span></a> </div>
+      </div>
+      </td> 
+      
+      <td>
+      <div class="span2">
+      <div class="x-m-subtitle">
+        <div style="float:left;"> <a id="li_ji_bo_fang" href="/one_key_play?id=5071af3890d7a909a3ff0b57" target="_blank" class="btn btn-large btn-primary" title="立即播放"> <i class="icon-white icon-play"></i> 立即购票 </a> </div>
+       
+      </div>
+      </td>    
+      </tr>
+      
+    </table>
+   
+    
+     
+      <section class="block-grey">
+        <!-- Tabs navigation -->
+        <ul class="nav nav-pills">
+          <li class="active"><a href="#blog" data-toggle="tab">最新评论</a></li>
+          <li><a href="#archives" data-toggle="tab">冒泡交友</a></li>
+          <li><a href="#comments" data-toggle="tab">影评心得</a></li>
+        </ul>
+        <!-- Tabs content -->
+        <div class="tab-content">
+          <div class="tab-pane active" id="blog">
+            <section class="post-widget">
+              <ul class="clearfix">
+                <li>
+                  <div class="avatar"> <a href="#"><img src="example/sidebar1.jpg" alt="photo" /></a> </div>
+                  <div class="description">
+                    <p><a href="blog-single.html"> 《同桌的妳》 
+                      想看还没看的可以点击右上角的小红叉了。 </a></p>
+                    <span class="date"><em>12 Apr 2012, 3 comments</em></span> </div>
+                  <div class="clear"></div>
+                </li>
+                <li>
+                  <div class="avatar"> <a href="#"><img src="example/sidebar2.jpg" alt="photo" /></a> </div>
+                  <div class="description">
+                    <p><a href="blog-single.html">不管是真心觉得好还是想跟我一样来吐槽的来发表下自</a></p>
+                    <span class="date"><em>12 Apr 2012, 3 comments</em></span> </div>
+                  <div class="clear"></div>
+                </li>
+                <li>
+                  <div class="avatar"> <a href="#"><img src="example/sidebar3.jpg" alt="photo" /></a> </div>
+                  <div class="description">
+                    <p><a href="blog-single.html">己的看法。 有幸看了点映场，一开始是抱着期待的心情去看的，不管是宣传还是预告，都还能体会到其中的些许诚意</a></p>
+                    <span class="date"><em>12 Apr 2012, 3 comments</em></span> </div>
+                  <div class="clear"></div>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div class="tab-pane" id="archives">
+            <section class="blog-category">
+              <ul class="ul-col1 clearfix">
+                <li><a href="#">《同桌的你》粉丝群</a></li>
+                <li><a href="#">《同桌的你》粉丝群</a></li>
+                <li><a href="#">《同桌的你》粉丝群</a></li>
+                <li><a href="#">《同桌的你》粉丝群</a></li>
+                <li><a href="#">《同桌的你》粉丝群</a></li>
+                <li><a href="#">《同桌的你》粉丝群</a></li>
+              </ul>
+            </section>
+          </div>
+          <div class="tab-pane" id="comments">
+            <section class="recent-comments">
+              <ul class="clearfix">
+                <li> <a href="./contact.html"><strong>用户自己的影评</strong></a></li>
+                <li><a href="http://movie.douban.com/review/latest/"><strong> 豆瓣最受欢迎的新片影评</strong></a></li>
+                <li> <a href="http://www.m1905.com/mdb/film/comment/"><strong>电影网最新影评</strong></a></li>
+                <li><a href="http://www.mtime.com/community/"><strong>时光网最新影评</strong></a></li>
+                <li> <a href="http://yingpingwang.com/"><strong>影评网最新影评</strong></a></li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!--footer-->
+<div class="container" style="background-color:#990">
+  <footer id="footer">
+    <div class="span12">
+      <section id="footer-menu span12 aligncenter">
+      <div class="container" >
+        <div class="span12 aligncenter">
+          <p class="span12 aligncenter">
+          <h2><span>&copy; Copyright 2014, <span class="color2">We Are Coming</span> | All Rights Reserved</span></h2>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script>
+  $("a[rel=tooltip]").tooltip()
+  $("a[rel=popover]").popover()
+</script>
+</body>
+</html>

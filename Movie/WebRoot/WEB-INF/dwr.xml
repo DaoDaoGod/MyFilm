@@ -9,8 +9,10 @@
 <create creator="spring" javascript="bm" >
 <param name="beanName" value="FilmService"/>
  <include method="getHotMovie"/>
+ <include method="getHotMovieByPage"/>
 </create>
 <convert match="com.myfilm.data.Film" converter="class"></convert>
+<convert match="com.myfilm.data.Photo" converter="bean"></convert>
 <convert match="com.myfilm.bean.FilmBean" converter="bean"></convert>
 </allow>
 </dwr>
