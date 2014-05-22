@@ -10,6 +10,7 @@
 <param name="beanName" value="FilmService"/>
  <include method="getHotMovie"/>
  <include method="getHotMovieByPage"/>
+ <include method="getUpComings"/> 
 </create>
 <convert match="com.myfilm.data.Film" converter="class"></convert>
 <convert match="com.myfilm.data.Photo" converter="bean"></convert>
