@@ -43,61 +43,61 @@
             </key>
             <one-to-many class="com.myfilm.data.Photo" />
         </set>
-        <set name="filmActors" inverse="true">
+        <set name="filmActors" inverse="true" lazy="false">
             <key>
                 <column name="film_id" not-null="true" />
             </key>
             <one-to-many class="com.myfilm.data.FilmActor" />
         </set>
-        <set name="downloads" inverse="true">
+        <set name="downloads" inverse="true" lazy="false">
             <key>
                 <column name="film_id" not-null="true" />
             </key>
             <one-to-many class="com.myfilm.data.Download" />
         </set>
-        <set name="filmTypes" inverse="true">
+        <set name="filmTypes" inverse="true" lazy="false">
             <key>
                 <column name="film_id" not-null="true" />
             </key>
             <one-to-many class="com.myfilm.data.FilmType" />
         </set>
-        <set name="viewlinks" inverse="true">
+        <set name="viewlinks" inverse="true" lazy="false">
             <key>
                 <column name="film_id" not-null="true" />
             </key>
             <one-to-many class="com.myfilm.data.Viewlink" />
         </set>
-        <set name="filmBoxoffices" inverse="true">
+        <set name="filmBoxoffices" inverse="true" lazy="false">
             <key>
                 <column name="film_id" not-null="true" />
             </key>
             <one-to-many class="com.myfilm.data.FilmBoxoffice" />
         </set>
-        <set name="filmGroups" inverse="true">
+        <set name="filmGroups" inverse="true" lazy="false">
             <key>
                 <column name="film_id" not-null="true" />
             </key>
             <one-to-many class="com.myfilm.data.FilmGroup" />
         </set>
-        <set name="filmPrizes" inverse="true">
+        <set name="filmPrizes" inverse="true" lazy="false">
             <key>
                 <column name="film_id" not-null="true" />
             </key>
             <one-to-many class="com.myfilm.data.FilmPrize" />
         </set>
-        <set name="filmUsers" inverse="true">
+        <set name="filmUsers" inverse="true" lazy="false">
             <key>
                 <column name="film_id" not-null="true" />
             </key>
             <one-to-many class="com.myfilm.data.FilmUser" />
         </set>
-        <set name="filmPlaces" inverse="true">
+        <set name="filmPlaces" inverse="true" lazy="false">
             <key>
                 <column name="film_id" not-null="true" />
             </key>
             <one-to-many class="com.myfilm.data.FilmPlace" />
         </set>
-        <set name="comments" inverse="true">
+        <set name="comments" inverse="true" lazy="false">
             <key>
                 <column name="film_id" not-null="true" />
             </key>

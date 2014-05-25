@@ -7,5 +7,9 @@ import com.myfilm.data.Film;
 
 public interface FilmServiceInf {
   public List<FilmBean> getHotMovie();
-  public List<FilmBean> getHotMovieByPage(int pagenum);
+  public List<FilmBean> getHotMovieByPage(int pagenum,float hotgrade);
+  public List<FilmBean> getUpComings();
+  public FilmBean getFilmById(Integer id);
+
+  
 }

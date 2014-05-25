@@ -11,6 +11,7 @@
  <include method="getHotMovie"/>
  <include method="getHotMovieByPage"/>
  <include method="getUpComings"/> 
+ <include method="getFilmById"/> 
 </create>
 <convert match="com.myfilm.data.Film" converter="class"></convert>
 <convert match="com.myfilm.data.Photo" converter="bean"></convert>
