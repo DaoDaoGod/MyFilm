@@ -62,10 +62,11 @@ public class ViewlinkDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(Viewlink instance) {
+	public List<Viewlink> findByExample(Viewlink instance) {
 		log.debug("finding Viewlink instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<Viewlink> results = (List<Viewlink>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -88,7 +89,7 @@ public class ViewlinkDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByViewlink(Object viewlink) {
+	public List<Viewlink> findByViewlink(Object viewlink) {
 		return findByProperty(VIEWLINK, viewlink);
 	}
 

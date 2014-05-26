@@ -63,10 +63,11 @@ public class BoxofficeDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(Boxoffice instance) {
+	public List<Boxoffice> findByExample(Boxoffice instance) {
 		log.debug("finding Boxoffice instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<Boxoffice> results = (List<Boxoffice>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -89,7 +90,7 @@ public class BoxofficeDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByBoxofficeName(Object boxofficeName) {
+	public List<Boxoffice> findByBoxofficeName(Object boxofficeName) {
 		return findByProperty(BOXOFFICE_NAME, boxofficeName);
 	}
 

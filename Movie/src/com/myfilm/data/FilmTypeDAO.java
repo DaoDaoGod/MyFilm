@@ -62,10 +62,11 @@ public class FilmTypeDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(FilmType instance) {
+	public List<FilmType> findByExample(FilmType instance) {
 		log.debug("finding FilmType instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<FilmType> results = (List<FilmType>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;

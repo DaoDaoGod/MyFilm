@@ -1,16 +1,19 @@
 package com.myfilm.data;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * CommentId entity. @author MyEclipse Persistence Tools
  */
-
+@Embeddable
 public class CommentId implements java.io.Serializable {
 
 	// Fields
 
 	private Integer commentId;
-	private User user;
-	private Film film;
+	private Integer userId;
+	private Integer filmId;
 
 	// Constructors
 
@@ -19,14 +22,15 @@ public class CommentId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public CommentId(Integer commentId, User user, Film film) {
+	public CommentId(Integer commentId, Integer userId, Integer filmId) {
 		this.commentId = commentId;
-		this.user = user;
-		this.film = film;
+		this.userId = userId;
+		this.filmId = filmId;
 	}
 
 	// Property accessors
 
+	@Column(name = "comment_id", nullable = false)
 	public Integer getCommentId() {
 		return this.commentId;
 	}
@@ -35,20 +39,22 @@ public class CommentId implements java.io.Serializable {
 		this.commentId = commentId;
 	}
 
-	public User getUser() {
-		return this.user;
+	@Column(name = "user_id", nullable = false)
+	public Integer getUserId() {
+		return this.userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	public Film getFilm() {
-		return this.film;
+	@Column(name = "film_id", nullable = false)
+	public Integer getFilmId() {
+		return this.filmId;
 	}
 
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setFilmId(Integer filmId) {
+		this.filmId = filmId;
 	}
 
 	public boolean equals(Object other) {
@@ -63,12 +69,12 @@ public class CommentId implements java.io.Serializable {
 		return ((this.getCommentId() == castOther.getCommentId()) || (this
 				.getCommentId() != null && castOther.getCommentId() != null && this
 				.getCommentId().equals(castOther.getCommentId())))
-				&& ((this.getUser() == castOther.getUser()) || (this.getUser() != null
-						&& castOther.getUser() != null && this.getUser()
-						.equals(castOther.getUser())))
-				&& ((this.getFilm() == castOther.getFilm()) || (this.getFilm() != null
-						&& castOther.getFilm() != null && this.getFilm()
-						.equals(castOther.getFilm())));
+				&& ((this.getUserId() == castOther.getUserId()) || (this
+						.getUserId() != null && castOther.getUserId() != null && this
+						.getUserId().equals(castOther.getUserId())))
+				&& ((this.getFilmId() == castOther.getFilmId()) || (this
+						.getFilmId() != null && castOther.getFilmId() != null && this
+						.getFilmId().equals(castOther.getFilmId())));
 	}
 
 	public int hashCode() {
@@ -77,9 +83,9 @@ public class CommentId implements java.io.Serializable {
 		result = 37 * result
 				+ (getCommentId() == null ? 0 : this.getCommentId().hashCode());
 		result = 37 * result
-				+ (getUser() == null ? 0 : this.getUser().hashCode());
+				+ (getUserId() == null ? 0 : this.getUserId().hashCode());
 		result = 37 * result
-				+ (getFilm() == null ? 0 : this.getFilm().hashCode());
+				+ (getFilmId() == null ? 0 : this.getFilmId().hashCode());
 		return result;
 	}
 

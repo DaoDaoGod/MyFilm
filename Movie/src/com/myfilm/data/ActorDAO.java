@@ -62,10 +62,11 @@ public class ActorDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(Actor instance) {
+	public List<Actor> findByExample(Actor instance) {
 		log.debug("finding Actor instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<Actor> results = (List<Actor>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -88,7 +89,7 @@ public class ActorDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByActor(Object actor) {
+	public List<Actor> findByActor(Object actor) {
 		return findByProperty(ACTOR, actor);
 	}
 

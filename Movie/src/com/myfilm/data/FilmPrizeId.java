@@ -1,15 +1,18 @@
 package com.myfilm.data;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * FilmPrizeId entity. @author MyEclipse Persistence Tools
  */
-
+@Embeddable
 public class FilmPrizeId implements java.io.Serializable {
 
 	// Fields
 
 	private Integer prizeId;
-	private Film film;
+	private Integer filmId;
 	private Integer prizeYear;
 
 	// Constructors
@@ -19,14 +22,15 @@ public class FilmPrizeId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public FilmPrizeId(Integer prizeId, Film film, Integer prizeYear) {
+	public FilmPrizeId(Integer prizeId, Integer filmId, Integer prizeYear) {
 		this.prizeId = prizeId;
-		this.film = film;
+		this.filmId = filmId;
 		this.prizeYear = prizeYear;
 	}
 
 	// Property accessors
 
+	@Column(name = "prize_id", nullable = false)
 	public Integer getPrizeId() {
 		return this.prizeId;
 	}
@@ -35,14 +39,16 @@ public class FilmPrizeId implements java.io.Serializable {
 		this.prizeId = prizeId;
 	}
 
-	public Film getFilm() {
-		return this.film;
+	@Column(name = "film_id", nullable = false)
+	public Integer getFilmId() {
+		return this.filmId;
 	}
 
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setFilmId(Integer filmId) {
+		this.filmId = filmId;
 	}
 
+	@Column(name = "prize_year", nullable = false)
 	public Integer getPrizeYear() {
 		return this.prizeYear;
 	}
@@ -63,9 +69,9 @@ public class FilmPrizeId implements java.io.Serializable {
 		return ((this.getPrizeId() == castOther.getPrizeId()) || (this
 				.getPrizeId() != null && castOther.getPrizeId() != null && this
 				.getPrizeId().equals(castOther.getPrizeId())))
-				&& ((this.getFilm() == castOther.getFilm()) || (this.getFilm() != null
-						&& castOther.getFilm() != null && this.getFilm()
-						.equals(castOther.getFilm())))
+				&& ((this.getFilmId() == castOther.getFilmId()) || (this
+						.getFilmId() != null && castOther.getFilmId() != null && this
+						.getFilmId().equals(castOther.getFilmId())))
 				&& ((this.getPrizeYear() == castOther.getPrizeYear()) || (this
 						.getPrizeYear() != null
 						&& castOther.getPrizeYear() != null && this
@@ -78,7 +84,7 @@ public class FilmPrizeId implements java.io.Serializable {
 		result = 37 * result
 				+ (getPrizeId() == null ? 0 : this.getPrizeId().hashCode());
 		result = 37 * result
-				+ (getFilm() == null ? 0 : this.getFilm().hashCode());
+				+ (getFilmId() == null ? 0 : this.getFilmId().hashCode());
 		result = 37 * result
 				+ (getPrizeYear() == null ? 0 : this.getPrizeYear().hashCode());
 		return result;

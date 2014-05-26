@@ -62,10 +62,11 @@ public class UserGroupDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(UserGroup instance) {
+	public List<UserGroup> findByExample(UserGroup instance) {
 		log.debug("finding UserGroup instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<UserGroup> results = (List<UserGroup>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -88,7 +89,7 @@ public class UserGroupDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByState(Object state) {
+	public List<UserGroup> findByState(Object state) {
 		return findByProperty(STATE, state);
 	}
 

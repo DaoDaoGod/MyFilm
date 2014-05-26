@@ -62,10 +62,11 @@ public class PrizeDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(Prize instance) {
+	public List<Prize> findByExample(Prize instance) {
 		log.debug("finding Prize instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<Prize> results = (List<Prize>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -88,7 +89,7 @@ public class PrizeDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByPrizename(Object prizename) {
+	public List<Prize> findByPrizename(Object prizename) {
 		return findByProperty(PRIZENAME, prizename);
 	}
 

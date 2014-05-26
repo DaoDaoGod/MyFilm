@@ -1,16 +1,28 @@
 package com.myfilm.data;
 
 import java.sql.Timestamp;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * Comment entity. @author MyEclipse Persistence Tools
  */
-
+@Entity
+@Table(name = "comment", catalog = "mydb")
 public class Comment implements java.io.Serializable {
 
 	// Fields
 
 	private CommentId id;
+	private User user;
+	private Film film;
 	private String email;
 	private String username;
 	private String content;
@@ -23,14 +35,18 @@ public class Comment implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Comment(CommentId id) {
+	public Comment(CommentId id, User user, Film film) {
 		this.id = id;
+		this.user = user;
+		this.film = film;
 	}
 
 	/** full constructor */
-	public Comment(CommentId id, String email, String username, String content,
-			Timestamp addTime) {
+	public Comment(CommentId id, User user, Film film, String email,
+			String username, String content, Timestamp addTime) {
 		this.id = id;
+		this.user = user;
+		this.film = film;
 		this.email = email;
 		this.username = username;
 		this.content = content;
@@ -38,7 +54,11 @@ public class Comment implements java.io.Serializable {
 	}
 
 	// Property accessors
-
+	@EmbeddedId
+	@AttributeOverrides({
+			@AttributeOverride(name = "commentId", column = @Column(name = "comment_id", nullable = false)),
+			@AttributeOverride(name = "userId", column = @Column(name = "user_id", nullable = false)),
+			@AttributeOverride(name = "filmId", column = @Column(name = "film_id", nullable = false)) })
 	public CommentId getId() {
 		return this.id;
 	}
@@ -47,6 +67,27 @@ public class Comment implements java.io.Serializable {
 		this.id = id;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "film_id", nullable = false, insertable = false, updatable = false)
+	public Film getFilm() {
+		return this.film;
+	}
+
+	public void setFilm(Film film) {
+		this.film = film;
+	}
+
+	@Column(name = "email", length = 45)
 	public String getEmail() {
 		return this.email;
 	}
@@ -55,6 +96,7 @@ public class Comment implements java.io.Serializable {
 		this.email = email;
 	}
 
+	@Column(name = "username", length = 45)
 	public String getUsername() {
 		return this.username;
 	}
@@ -63,6 +105,7 @@ public class Comment implements java.io.Serializable {
 		this.username = username;
 	}
 
+	@Column(name = "content", length = 65535)
 	public String getContent() {
 		return this.content;
 	}
@@ -71,6 +114,7 @@ public class Comment implements java.io.Serializable {
 		this.content = content;
 	}
 
+	@Column(name = "add_time", length = 19)
 	public Timestamp getAddTime() {
 		return this.addTime;
 	}

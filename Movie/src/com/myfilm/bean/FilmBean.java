@@ -86,6 +86,13 @@ public class FilmBean {
 		this.filmdirector = filmdirector;
 	}
 	private int filmId;
+	private float dbgrade;
+	public float getDbgrade() {
+		return dbgrade;
+	}
+	public void setDbgrade(float dbgrade) {
+		this.dbgrade = dbgrade;
+	}
 	private String name;
 	private String description;
 	private String filmdirector;

@@ -1,9 +1,12 @@
 package com.myfilm.data;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * PrizeId entity. @author MyEclipse Persistence Tools
  */
-
+@Embeddable
 public class PrizeId implements java.io.Serializable {
 
 	// Fields
@@ -25,6 +28,7 @@ public class PrizeId implements java.io.Serializable {
 
 	// Property accessors
 
+	@Column(name = "prize_id", nullable = false)
 	public Integer getPrizeId() {
 		return this.prizeId;
 	}
@@ -33,6 +37,7 @@ public class PrizeId implements java.io.Serializable {
 		this.prizeId = prizeId;
 	}
 
+	@Column(name = "year", nullable = false)
 	public Integer getYear() {
 		return this.year;
 	}

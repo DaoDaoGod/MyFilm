@@ -62,10 +62,11 @@ public class FilmBoxofficeDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(FilmBoxoffice instance) {
+	public List<FilmBoxoffice> findByExample(FilmBoxoffice instance) {
 		log.debug("finding FilmBoxoffice instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<FilmBoxoffice> results = (List<FilmBoxoffice>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;

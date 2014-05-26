@@ -27,6 +27,7 @@ public class UserDAO extends HibernateDaoSupport {
 	public static final String PASSWORD = "password";
 	public static final String NICKNAME = "nickname";
 	public static final String GENDER = "gender";
+	public static final String USERPHOTO = "userphoto";
 
 	protected void initDao() {
 		// do nothing
@@ -66,10 +67,11 @@ public class UserDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(User instance) {
+	public List<User> findByExample(User instance) {
 		log.debug("finding User instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<User> results = (List<User>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -92,20 +94,24 @@ public class UserDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByEmail(Object email) {
+	public List<User> findByEmail(Object email) {
 		return findByProperty(EMAIL, email);
 	}
 
-	public List findByPassword(Object password) {
+	public List<User> findByPassword(Object password) {
 		return findByProperty(PASSWORD, password);
 	}
 
-	public List findByNickname(Object nickname) {
+	public List<User> findByNickname(Object nickname) {
 		return findByProperty(NICKNAME, nickname);
 	}
 
-	public List findByGender(Object gender) {
+	public List<User> findByGender(Object gender) {
 		return findByProperty(GENDER, gender);
+	}
+
+	public List<User> findByUserphoto(Object userphoto) {
+		return findByProperty(USERPHOTO, userphoto);
 	}
 
 	public List findAll() {

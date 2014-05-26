@@ -62,10 +62,11 @@ public class TypeDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(Type instance) {
+	public List<Type> findByExample(Type instance) {
 		log.debug("finding Type instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<Type> results = (List<Type>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -88,7 +89,7 @@ public class TypeDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByType(Object type) {
+	public List<Type> findByType(Object type) {
 		return findByProperty(TYPE, type);
 	}
 

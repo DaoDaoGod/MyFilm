@@ -65,36 +65,36 @@
         </div>
         <nav id="menu" style="margin-left:90px;margin-right:90px;">
             <ul class="clearfix">
-                <li><a href="./index.html" class="current">首页</a>
+                <li><a href="./index.html" class="current" style="font-family:微软雅黑;">首页</a>
                 </li>
-                <li><a href="./hot.html">热门</a>
+                <li><a href="./hot.html" style="font-family:微软雅黑;">热门</a>
                 </li>
-                <li><a href="./classify.html">分类</a>
+                <li><a href="./classify.html" style="font-family:微软雅黑;">分类</a>
                 </li>
-                <li><a href="./rank.html">榜单</a>
+                <li><a href="./rank.html" style="font-family:微软雅黑;">榜单</a>
                 </li>
-                <li><a href="./group.html">圈子</a>
+                <li><a href="./group.html" style="font-family:微软雅黑;">圈子</a>
                 </li>
-                <li><a href="./about.html">关于我们</a>
+                <li><a href="./about.html" style="font-family:微软雅黑;">关于我们</a>
                 </li>
                 <li>
-                    <form id="search" class="input-append" />
+                    <form id="search" class="input-append" >
 
                     <input class="" id="appendedInputButton" size="16" type="text" value="搜索..." name="search site" onFocus="if(this.value=='Search...') this.value=''" onBlur="if(this.value=='') this.value='...'" />
                     <input class="btn search-bt" type="submit" name="submit" value="" />
                     </form>
                 </li>
-                <li>
-                    <a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;margin-left:205px;"> <i class="icon-user icon-white"></i><font id="nav_nickname"> 登录 </font> 
+                <li >
+                    <a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;margin-left:70px;"> <i class="icon-user icon-white"></i> <span style="font-family:微软雅黑;">登录 </span>
                     </a>
                 </li>
-                </li>
+                
                 <li>
                     <a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;">
-                        </i><font id="nav_nickname"> 注册</font> 
+                        <span style="font-family:微软雅黑;"> 注册</span> 
                     </a>
                 </li>
-                </li>
+                
             </ul>
         </nav>
 
@@ -170,10 +170,8 @@
         </div>
     </div>
     <!-- container -->
-    <section id="container">
-        <div class="container">
-            <div class="row">
-                <div class="span12">
+    <section id="container" style="margin-left:90px;margin-right:90px;">
+
                     <div class="title-divider">
                         <h3>影片信息</h3>
                         <div class="divider-arrow"></div>
@@ -183,7 +181,7 @@
                         <section id="page-sidebar" class="alignleft span10">
                             <!-- content -->
                             <div class="clear"></div>
-                            <div class="container">
+                          
                                 <div class="row">
                                     <div class="span10">
                                         <div class="row">
@@ -280,14 +278,20 @@
                            </div>
                            </div>
                            <div class="wrapper">
-                           <h2 class="post-title"><a href="#">同桌的妳</a></h2>
-                           <a id="filmdescription" href="#" class="blog-comments">3</a>
+                           <h2 id="bigname" class="post-title"><div><a href="#">同桌的妳</a></div></h2>
+                           <a  href="#" class="blog-comments">3</a>
+                           <div id="filmdescription">
                            <blockquote>
                            <p style="font-family:微软雅黑;">1993年的夏天，文静秀气、戴着一副小孔眼镜的转校生周小栀（周冬雨饰），第一次见到了自己的同桌——坐在最后一排的捣蛋男生林一（林更新饰），他们一起经历了初中、高中和大学的青葱岁月。林一对周小栀说：“总有一天，我会带你去一个只有我们俩的地方。”一晃十年……
                            </p>
                            </blockquote>
+                           </div>
+                           <div id="tagss">
+                           
                            <p class="tags">Tags:<a href="#">爱情</a>,<a href="#">剧情</a>,<a href="#">科幻</a>
                            </p>
+                           
+                           </div>
                            <hr />
                            <div class="title-divider">
                            <h3>评论</h3>
@@ -321,7 +325,7 @@
                            <h3>我的评论</h3>
                            <div class="divider-arrow"></div>
                            </div>
-                           <form name="comment" method="post" action="" class="af-form" id="af-form" />
+                           <form name="comment" method="post" action="" class="af-form" id="af-form" >
                            <div class="af-outer af-required">
                            <div class="af-inner">
                            <label for="name" id="name_label">昵称:</label>
@@ -355,6 +359,8 @@
                            </div>
                            </div>
                            </div>
+                      </section>
+                      </div></section>
                                             <!--footer-->
                                             <div class="container" style="background-color:#990">
                                                 <footer id="footer">
@@ -363,17 +369,18 @@
                                                             <div class="container">
                                                                 <div class="span12 aligncenter">
                                                                     <p class="span12 aligncenter">
-                                                                        <h2><span>&copy; Copyright 2014, <span class="color2">We Are Coming</span> | All Rights Reserved</span></h2>
+                                                                        <h2><span>&copy; Copyright 2014,</span> <span class="color2">We Are Coming</span> | All Rights Reserved</h2>
                                                                     </p>
                                                                 </div>
                                                             </div>
+                                                          </section>
                                                     </div>
                                                 </footer>
 
                                             </div>
                                             <script>
-                                                $("a[rel=tooltip]").tooltip()
-                                                 $("a[rel=popover]").popover()
+                                                $("a[rel=tooltip]").tooltip();
+                                                 $("a[rel=popover]").popover();
                                             </script>
 </body>
 

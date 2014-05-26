@@ -83,6 +83,19 @@ function smCb(data)
     var nameel=document.createElement("h3");
     nameel.innerHTML=data['name'];
     nameElement.appendChild(nameel);
+    
+	var nameElement1 = document.getElementById("bigname");
+    nameElement1.innerHTML="";
+    var nameel1=document.createElement("div");
+    nameel1.innerHTML='<a href="#">'+data['name']+'</a>';
+    nameElement1.appendChild(nameel1);
+    
+	var desElement = document.getElementById("filmdescription");
+    desElement.innerHTML="";
+    var desel=document.createElement("blockquote");
+    desel.innerHTML='<p style="font-family:Î¢ÈíÑÅºÚ;">'+data['description']+'</p>';
+    desElement.appendChild(desel);
+    
 
 	var directorElement = document.getElementById("director");
 	directorElement.innerHTML="";
@@ -117,6 +130,23 @@ function smCb(data)
     }
     typeel.innerHTML=typelist;
     typeElement.appendChild(typeel);
+    
+	var typeElement1 = document.getElementById("tagss");
+	typeElement1.innerHTML="";
+    var typeel1=document.createElement("div");
+    var typelist='<p class="tags">Tags:';
+    for(var i=0;i<data['filmtype'].length;i++)
+    {
+    	if(i!=0)
+    	typelist=typelist+'<a href="#">,'+data['filmtype'][i]+'</a>';
+    	else
+    	typelist=typelist+'<a href="#">'+data['filmtype'][i]+'</a>';
+    }
+    typelist+='</p>';
+    typeel1.innerHTML=typelist;
+    typeElement1.appendChild(typeel1);
+    
+    
     
 	var placeElement = document.getElementById("filmplace");
 	placeElement.innerHTML="";
@@ -155,7 +185,7 @@ function smCb(data)
 	var dblinkElement = document.getElementById("dblink");
 	dblinkElement.innerHTML="";
     var dblinkel=document.createElement("div");
-    dblinkel.innerHTML='<strong>&#x8C46;&#x74E3;</strong> <a rel="nofollow" href="'+data['dblink'] +'"target="_blank" data-toggle="tooltip" class="x-tooltip" title="&#x8C46;&#x74E3;&#x94FE;&#x63A5;"><span class="badge" style="color: green; font-weight: bold;">7.3</span></a>';
+    dblinkel.innerHTML='<strong>&#x8C46;&#x74E3;</strong> <a rel="nofollow" href="'+data['dblink'] +'"target="_blank" data-toggle="tooltip" class="x-tooltip" title="&#x8C46;&#x74E3;&#x94FE;&#x63A5;"><span class="badge" style="color: green; font-weight: bold;">'+data['dbgrade']+'</span></a>';
     dblinkElement.appendChild(dblinkel);
     
 	var imgElement = document.getElementById("showimg");

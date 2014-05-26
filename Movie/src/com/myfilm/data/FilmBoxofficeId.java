@@ -1,15 +1,19 @@
 package com.myfilm.data;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * FilmBoxofficeId entity. @author MyEclipse Persistence Tools
  */
-
+@Embeddable
 public class FilmBoxofficeId implements java.io.Serializable {
 
 	// Fields
 
-	private Boxoffice boxoffice;
-	private Film film;
+	private Integer boxofficeId;
+	private Integer boxofficeWeeks;
+	private Integer filmId;
 
 	// Constructors
 
@@ -18,27 +22,40 @@ public class FilmBoxofficeId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public FilmBoxofficeId(Boxoffice boxoffice, Film film) {
-		this.boxoffice = boxoffice;
-		this.film = film;
+	public FilmBoxofficeId(Integer boxofficeId, Integer boxofficeWeeks,
+			Integer filmId) {
+		this.boxofficeId = boxofficeId;
+		this.boxofficeWeeks = boxofficeWeeks;
+		this.filmId = filmId;
 	}
 
 	// Property accessors
 
-	public Boxoffice getBoxoffice() {
-		return this.boxoffice;
+	@Column(name = "boxoffice_id", nullable = false)
+	public Integer getBoxofficeId() {
+		return this.boxofficeId;
 	}
 
-	public void setBoxoffice(Boxoffice boxoffice) {
-		this.boxoffice = boxoffice;
+	public void setBoxofficeId(Integer boxofficeId) {
+		this.boxofficeId = boxofficeId;
 	}
 
-	public Film getFilm() {
-		return this.film;
+	@Column(name = "boxoffice_weeks", nullable = false)
+	public Integer getBoxofficeWeeks() {
+		return this.boxofficeWeeks;
 	}
 
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setBoxofficeWeeks(Integer boxofficeWeeks) {
+		this.boxofficeWeeks = boxofficeWeeks;
+	}
+
+	@Column(name = "film_id", nullable = false)
+	public Integer getFilmId() {
+		return this.filmId;
+	}
+
+	public void setFilmId(Integer filmId) {
+		this.filmId = filmId;
 	}
 
 	public boolean equals(Object other) {
@@ -50,21 +67,32 @@ public class FilmBoxofficeId implements java.io.Serializable {
 			return false;
 		FilmBoxofficeId castOther = (FilmBoxofficeId) other;
 
-		return ((this.getBoxoffice() == castOther.getBoxoffice()) || (this
-				.getBoxoffice() != null && castOther.getBoxoffice() != null && this
-				.getBoxoffice().equals(castOther.getBoxoffice())))
-				&& ((this.getFilm() == castOther.getFilm()) || (this.getFilm() != null
-						&& castOther.getFilm() != null && this.getFilm()
-						.equals(castOther.getFilm())));
+		return ((this.getBoxofficeId() == castOther.getBoxofficeId()) || (this
+				.getBoxofficeId() != null && castOther.getBoxofficeId() != null && this
+				.getBoxofficeId().equals(castOther.getBoxofficeId())))
+				&& ((this.getBoxofficeWeeks() == castOther.getBoxofficeWeeks()) || (this
+						.getBoxofficeWeeks() != null
+						&& castOther.getBoxofficeWeeks() != null && this
+						.getBoxofficeWeeks().equals(
+								castOther.getBoxofficeWeeks())))
+				&& ((this.getFilmId() == castOther.getFilmId()) || (this
+						.getFilmId() != null && castOther.getFilmId() != null && this
+						.getFilmId().equals(castOther.getFilmId())));
 	}
 
 	public int hashCode() {
 		int result = 17;
 
+		result = 37
+				* result
+				+ (getBoxofficeId() == null ? 0 : this.getBoxofficeId()
+						.hashCode());
+		result = 37
+				* result
+				+ (getBoxofficeWeeks() == null ? 0 : this.getBoxofficeWeeks()
+						.hashCode());
 		result = 37 * result
-				+ (getBoxoffice() == null ? 0 : this.getBoxoffice().hashCode());
-		result = 37 * result
-				+ (getFilm() == null ? 0 : this.getFilm().hashCode());
+				+ (getFilmId() == null ? 0 : this.getFilmId().hashCode());
 		return result;
 	}
 

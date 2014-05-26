@@ -25,6 +25,7 @@ public class GroupDAO extends HibernateDaoSupport {
 	public static final String GROUP_NAME = "groupName";
 	public static final String GROUP_DESCRIPTION = "groupDescription";
 	public static final String GROUP_OWNER = "groupOwner";
+	public static final String DROUP_NUMBER = "droupNumber";
 
 	protected void initDao() {
 		// do nothing
@@ -64,10 +65,11 @@ public class GroupDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(Group instance) {
+	public List<Group> findByExample(Group instance) {
 		log.debug("finding Group instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<Group> results = (List<Group>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -90,16 +92,20 @@ public class GroupDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByGroupName(Object groupName) {
+	public List<Group> findByGroupName(Object groupName) {
 		return findByProperty(GROUP_NAME, groupName);
 	}
 
-	public List findByGroupDescription(Object groupDescription) {
+	public List<Group> findByGroupDescription(Object groupDescription) {
 		return findByProperty(GROUP_DESCRIPTION, groupDescription);
 	}
 
-	public List findByGroupOwner(Object groupOwner) {
+	public List<Group> findByGroupOwner(Object groupOwner) {
 		return findByProperty(GROUP_OWNER, groupOwner);
+	}
+
+	public List<Group> findByDroupNumber(Object droupNumber) {
+		return findByProperty(DROUP_NUMBER, droupNumber);
 	}
 
 	public List findAll() {

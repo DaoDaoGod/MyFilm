@@ -3,11 +3,24 @@ package com.myfilm.data;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Film entity. @author MyEclipse Persistence Tools
  */
-
+@Entity
+@Table(name = "film", catalog = "mydb", uniqueConstraints = @UniqueConstraint(columnNames = "name"))
 public class Film implements java.io.Serializable {
 
 	// Fields
@@ -19,20 +32,20 @@ public class Film implements java.io.Serializable {
 	private Integer duration;
 	private Date update;
 	private String dblink;
-	private String imdblink;
-	private Float hotgrade;
+	private Float dbgrade;
+	private Integer hotgrade;
 	private String othername;
-	private Set photos = new HashSet(0);
-	private Set filmActors = new HashSet(0);
-	private Set downloads = new HashSet(0);
-	private Set filmTypes = new HashSet(0);
-	private Set viewlinks = new HashSet(0);
-	private Set filmBoxoffices = new HashSet(0);
-	private Set filmGroups = new HashSet(0);
-	private Set filmPrizes = new HashSet(0);
-	private Set filmUsers = new HashSet(0);
-	private Set filmPlaces = new HashSet(0);
-	private Set comments = new HashSet(0);
+	private Set<Photo> photos = new HashSet<Photo>(0);
+	private Set<FilmActor> filmActors = new HashSet<FilmActor>(0);
+	private Set<Download> downloads = new HashSet<Download>(0);
+	private Set<FilmType> filmTypes = new HashSet<FilmType>(0);
+	private Set<Viewlink> viewlinks = new HashSet<Viewlink>(0);
+	private Set<FilmBoxoffice> filmBoxoffices = new HashSet<FilmBoxoffice>(0);
+	private Set<FilmGroup> filmGroups = new HashSet<FilmGroup>(0);
+	private Set<FilmPrize> filmPrizes = new HashSet<FilmPrize>(0);
+	private Set<FilmUser> filmUsers = new HashSet<FilmUser>(0);
+	private Set<FilmPlace> filmPlaces = new HashSet<FilmPlace>(0);
+	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	// Constructors
 
@@ -47,18 +60,20 @@ public class Film implements java.io.Serializable {
 
 	/** full constructor */
 	public Film(String name, String description, String director,
-			Integer duration, Date update, String dblink, String imdblink,
-			Float hotgrade, String othername, Set photos, Set filmActors,
-			Set downloads, Set filmTypes, Set viewlinks, Set filmBoxoffices,
-			Set filmGroups, Set filmPrizes, Set filmUsers, Set filmPlaces,
-			Set comments) {
+			Integer duration, Date update, String dblink, Float dbgrade,
+			Integer hotgrade, String othername, Set<Photo> photos,
+			Set<FilmActor> filmActors, Set<Download> downloads,
+			Set<FilmType> filmTypes, Set<Viewlink> viewlinks,
+			Set<FilmBoxoffice> filmBoxoffices, Set<FilmGroup> filmGroups,
+			Set<FilmPrize> filmPrizes, Set<FilmUser> filmUsers,
+			Set<FilmPlace> filmPlaces, Set<Comment> comments) {
 		this.name = name;
 		this.description = description;
 		this.director = director;
 		this.duration = duration;
 		this.update = update;
 		this.dblink = dblink;
-		this.imdblink = imdblink;
+		this.dbgrade = dbgrade;
 		this.hotgrade = hotgrade;
 		this.othername = othername;
 		this.photos = photos;
@@ -75,7 +90,9 @@ public class Film implements java.io.Serializable {
 	}
 
 	// Property accessors
-
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "film_id", unique = true, nullable = false)
 	public Integer getFilmId() {
 		return this.filmId;
 	}
@@ -84,6 +101,7 @@ public class Film implements java.io.Serializable {
 		this.filmId = filmId;
 	}
 
+	@Column(name = "name", unique = true, nullable = false)
 	public String getName() {
 		return this.name;
 	}
@@ -92,6 +110,7 @@ public class Film implements java.io.Serializable {
 		this.name = name;
 	}
 
+	@Column(name = "description", length = 65535)
 	public String getDescription() {
 		return this.description;
 	}
@@ -100,6 +119,7 @@ public class Film implements java.io.Serializable {
 		this.description = description;
 	}
 
+	@Column(name = "director", length = 45)
 	public String getDirector() {
 		return this.director;
 	}
@@ -108,6 +128,7 @@ public class Film implements java.io.Serializable {
 		this.director = director;
 	}
 
+	@Column(name = "duration")
 	public Integer getDuration() {
 		return this.duration;
 	}
@@ -116,6 +137,8 @@ public class Film implements java.io.Serializable {
 		this.duration = duration;
 	}
 
+	@Temporal(TemporalType.DATE)
+	@Column(name = "update", length = 10)
 	public Date getUpdate() {
 		return this.update;
 	}
@@ -124,6 +147,7 @@ public class Film implements java.io.Serializable {
 		this.update = update;
 	}
 
+	@Column(name = "dblink")
 	public String getDblink() {
 		return this.dblink;
 	}
@@ -132,22 +156,25 @@ public class Film implements java.io.Serializable {
 		this.dblink = dblink;
 	}
 
-	public String getImdblink() {
-		return this.imdblink;
+	@Column(name = "dbgrade", precision = 12, scale = 0)
+	public Float getDbgrade() {
+		return this.dbgrade;
 	}
 
-	public void setImdblink(String imdblink) {
-		this.imdblink = imdblink;
+	public void setDbgrade(Float dbgrade) {
+		this.dbgrade = dbgrade;
 	}
 
-	public Float getHotgrade() {
+	@Column(name = "hotgrade")
+	public Integer getHotgrade() {
 		return this.hotgrade;
 	}
 
-	public void setHotgrade(Float hotgrade) {
+	public void setHotgrade(Integer hotgrade) {
 		this.hotgrade = hotgrade;
 	}
 
+	@Column(name = "othername")
 	public String getOthername() {
 		return this.othername;
 	}
@@ -156,91 +183,102 @@ public class Film implements java.io.Serializable {
 		this.othername = othername;
 	}
 
-	public Set getPhotos() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "film")
+	public Set<Photo> getPhotos() {
 		return this.photos;
 	}
 
-	public void setPhotos(Set photos) {
+	public void setPhotos(Set<Photo> photos) {
 		this.photos = photos;
 	}
 
-	public Set getFilmActors() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "film")
+	public Set<FilmActor> getFilmActors() {
 		return this.filmActors;
 	}
 
-	public void setFilmActors(Set filmActors) {
+	public void setFilmActors(Set<FilmActor> filmActors) {
 		this.filmActors = filmActors;
 	}
 
-	public Set getDownloads() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "film")
+	public Set<Download> getDownloads() {
 		return this.downloads;
 	}
 
-	public void setDownloads(Set downloads) {
+	public void setDownloads(Set<Download> downloads) {
 		this.downloads = downloads;
 	}
 
-	public Set getFilmTypes() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "film")
+	public Set<FilmType> getFilmTypes() {
 		return this.filmTypes;
 	}
 
-	public void setFilmTypes(Set filmTypes) {
+	public void setFilmTypes(Set<FilmType> filmTypes) {
 		this.filmTypes = filmTypes;
 	}
 
-	public Set getViewlinks() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "film")
+	public Set<Viewlink> getViewlinks() {
 		return this.viewlinks;
 	}
 
-	public void setViewlinks(Set viewlinks) {
+	public void setViewlinks(Set<Viewlink> viewlinks) {
 		this.viewlinks = viewlinks;
 	}
 
-	public Set getFilmBoxoffices() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "film")
+	public Set<FilmBoxoffice> getFilmBoxoffices() {
 		return this.filmBoxoffices;
 	}
 
-	public void setFilmBoxoffices(Set filmBoxoffices) {
+	public void setFilmBoxoffices(Set<FilmBoxoffice> filmBoxoffices) {
 		this.filmBoxoffices = filmBoxoffices;
 	}
 
-	public Set getFilmGroups() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "film")
+	public Set<FilmGroup> getFilmGroups() {
 		return this.filmGroups;
 	}
 
-	public void setFilmGroups(Set filmGroups) {
+	public void setFilmGroups(Set<FilmGroup> filmGroups) {
 		this.filmGroups = filmGroups;
 	}
 
-	public Set getFilmPrizes() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "film")
+	public Set<FilmPrize> getFilmPrizes() {
 		return this.filmPrizes;
 	}
 
-	public void setFilmPrizes(Set filmPrizes) {
+	public void setFilmPrizes(Set<FilmPrize> filmPrizes) {
 		this.filmPrizes = filmPrizes;
 	}
 
-	public Set getFilmUsers() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "film")
+	public Set<FilmUser> getFilmUsers() {
 		return this.filmUsers;
 	}
 
-	public void setFilmUsers(Set filmUsers) {
+	public void setFilmUsers(Set<FilmUser> filmUsers) {
 		this.filmUsers = filmUsers;
 	}
 
-	public Set getFilmPlaces() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "film")
+	public Set<FilmPlace> getFilmPlaces() {
 		return this.filmPlaces;
 	}
 
-	public void setFilmPlaces(Set filmPlaces) {
+	public void setFilmPlaces(Set<FilmPlace> filmPlaces) {
 		this.filmPlaces = filmPlaces;
 	}
 
-	public Set getComments() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "film")
+	public Set<Comment> getComments() {
 		return this.comments;
 	}
 
-	public void setComments(Set comments) {
+	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
 

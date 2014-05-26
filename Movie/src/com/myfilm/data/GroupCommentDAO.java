@@ -65,10 +65,11 @@ public class GroupCommentDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(GroupComment instance) {
+	public List<GroupComment> findByExample(GroupComment instance) {
 		log.debug("finding GroupComment instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<GroupComment> results = (List<GroupComment>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -91,19 +92,19 @@ public class GroupCommentDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByEmail(Object email) {
+	public List<GroupComment> findByEmail(Object email) {
 		return findByProperty(EMAIL, email);
 	}
 
-	public List findByUsername(Object username) {
+	public List<GroupComment> findByUsername(Object username) {
 		return findByProperty(USERNAME, username);
 	}
 
-	public List findByContent(Object content) {
+	public List<GroupComment> findByContent(Object content) {
 		return findByProperty(CONTENT, content);
 	}
 
-	public List findByAddTime(Object addTime) {
+	public List<GroupComment> findByAddTime(Object addTime) {
 		return findByProperty(ADD_TIME, addTime);
 	}
 

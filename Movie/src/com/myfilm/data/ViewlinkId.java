@@ -1,15 +1,18 @@
 package com.myfilm.data;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * ViewlinkId entity. @author MyEclipse Persistence Tools
  */
-
+@Embeddable
 public class ViewlinkId implements java.io.Serializable {
 
 	// Fields
 
 	private Integer viewlinkId;
-	private Film film;
+	private Integer filmId;
 
 	// Constructors
 
@@ -18,13 +21,14 @@ public class ViewlinkId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public ViewlinkId(Integer viewlinkId, Film film) {
+	public ViewlinkId(Integer viewlinkId, Integer filmId) {
 		this.viewlinkId = viewlinkId;
-		this.film = film;
+		this.filmId = filmId;
 	}
 
 	// Property accessors
 
+	@Column(name = "viewlink_id", nullable = false)
 	public Integer getViewlinkId() {
 		return this.viewlinkId;
 	}
@@ -33,12 +37,13 @@ public class ViewlinkId implements java.io.Serializable {
 		this.viewlinkId = viewlinkId;
 	}
 
-	public Film getFilm() {
-		return this.film;
+	@Column(name = "film_id", nullable = false)
+	public Integer getFilmId() {
+		return this.filmId;
 	}
 
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setFilmId(Integer filmId) {
+		this.filmId = filmId;
 	}
 
 	public boolean equals(Object other) {
@@ -53,9 +58,9 @@ public class ViewlinkId implements java.io.Serializable {
 		return ((this.getViewlinkId() == castOther.getViewlinkId()) || (this
 				.getViewlinkId() != null && castOther.getViewlinkId() != null && this
 				.getViewlinkId().equals(castOther.getViewlinkId())))
-				&& ((this.getFilm() == castOther.getFilm()) || (this.getFilm() != null
-						&& castOther.getFilm() != null && this.getFilm()
-						.equals(castOther.getFilm())));
+				&& ((this.getFilmId() == castOther.getFilmId()) || (this
+						.getFilmId() != null && castOther.getFilmId() != null && this
+						.getFilmId().equals(castOther.getFilmId())));
 	}
 
 	public int hashCode() {
@@ -66,7 +71,7 @@ public class ViewlinkId implements java.io.Serializable {
 				+ (getViewlinkId() == null ? 0 : this.getViewlinkId()
 						.hashCode());
 		result = 37 * result
-				+ (getFilm() == null ? 0 : this.getFilm().hashCode());
+				+ (getFilmId() == null ? 0 : this.getFilmId().hashCode());
 		return result;
 	}
 

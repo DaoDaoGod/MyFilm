@@ -1,15 +1,18 @@
 package com.myfilm.data;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * PhotoId entity. @author MyEclipse Persistence Tools
  */
-
+@Embeddable
 public class PhotoId implements java.io.Serializable {
 
 	// Fields
 
 	private Integer photoId;
-	private Film film;
+	private Integer filmId;
 
 	// Constructors
 
@@ -18,13 +21,14 @@ public class PhotoId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public PhotoId(Integer photoId, Film film) {
+	public PhotoId(Integer photoId, Integer filmId) {
 		this.photoId = photoId;
-		this.film = film;
+		this.filmId = filmId;
 	}
 
 	// Property accessors
 
+	@Column(name = "photo_id", nullable = false)
 	public Integer getPhotoId() {
 		return this.photoId;
 	}
@@ -33,12 +37,13 @@ public class PhotoId implements java.io.Serializable {
 		this.photoId = photoId;
 	}
 
-	public Film getFilm() {
-		return this.film;
+	@Column(name = "film_id", nullable = false)
+	public Integer getFilmId() {
+		return this.filmId;
 	}
 
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setFilmId(Integer filmId) {
+		this.filmId = filmId;
 	}
 
 	public boolean equals(Object other) {
@@ -53,9 +58,9 @@ public class PhotoId implements java.io.Serializable {
 		return ((this.getPhotoId() == castOther.getPhotoId()) || (this
 				.getPhotoId() != null && castOther.getPhotoId() != null && this
 				.getPhotoId().equals(castOther.getPhotoId())))
-				&& ((this.getFilm() == castOther.getFilm()) || (this.getFilm() != null
-						&& castOther.getFilm() != null && this.getFilm()
-						.equals(castOther.getFilm())));
+				&& ((this.getFilmId() == castOther.getFilmId()) || (this
+						.getFilmId() != null && castOther.getFilmId() != null && this
+						.getFilmId().equals(castOther.getFilmId())));
 	}
 
 	public int hashCode() {
@@ -64,7 +69,7 @@ public class PhotoId implements java.io.Serializable {
 		result = 37 * result
 				+ (getPhotoId() == null ? 0 : this.getPhotoId().hashCode());
 		result = 37 * result
-				+ (getFilm() == null ? 0 : this.getFilm().hashCode());
+				+ (getFilmId() == null ? 0 : this.getFilmId().hashCode());
 		return result;
 	}
 

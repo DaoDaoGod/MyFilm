@@ -64,10 +64,11 @@ public class CommentDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(Comment instance) {
+	public List<Comment> findByExample(Comment instance) {
 		log.debug("finding Comment instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<Comment> results = (List<Comment>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -90,15 +91,15 @@ public class CommentDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByEmail(Object email) {
+	public List<Comment> findByEmail(Object email) {
 		return findByProperty(EMAIL, email);
 	}
 
-	public List findByUsername(Object username) {
+	public List<Comment> findByUsername(Object username) {
 		return findByProperty(USERNAME, username);
 	}
 
-	public List findByContent(Object content) {
+	public List<Comment> findByContent(Object content) {
 		return findByProperty(CONTENT, content);
 	}
 

@@ -62,10 +62,11 @@ public class PlaceDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(Place instance) {
+	public List<Place> findByExample(Place instance) {
 		log.debug("finding Place instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<Place> results = (List<Place>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -88,7 +89,7 @@ public class PlaceDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByPlace(Object place) {
+	public List<Place> findByPlace(Object place) {
 		return findByProperty(PLACE, place);
 	}
 

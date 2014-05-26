@@ -1,15 +1,18 @@
 package com.myfilm.data;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * UserGroupId entity. @author MyEclipse Persistence Tools
  */
-
+@Embeddable
 public class UserGroupId implements java.io.Serializable {
 
 	// Fields
 
-	private Group group;
-	private User user;
+	private Integer groupId;
+	private Integer userId;
 
 	// Constructors
 
@@ -18,27 +21,29 @@ public class UserGroupId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public UserGroupId(Group group, User user) {
-		this.group = group;
-		this.user = user;
+	public UserGroupId(Integer groupId, Integer userId) {
+		this.groupId = groupId;
+		this.userId = userId;
 	}
 
 	// Property accessors
 
-	public Group getGroup() {
-		return this.group;
+	@Column(name = "group_id", nullable = false)
+	public Integer getGroupId() {
+		return this.groupId;
 	}
 
-	public void setGroup(Group group) {
-		this.group = group;
+	public void setGroupId(Integer groupId) {
+		this.groupId = groupId;
 	}
 
-	public User getUser() {
-		return this.user;
+	@Column(name = "user_id", nullable = false)
+	public Integer getUserId() {
+		return this.userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public boolean equals(Object other) {
@@ -50,21 +55,21 @@ public class UserGroupId implements java.io.Serializable {
 			return false;
 		UserGroupId castOther = (UserGroupId) other;
 
-		return ((this.getGroup() == castOther.getGroup()) || (this.getGroup() != null
-				&& castOther.getGroup() != null && this.getGroup().equals(
-				castOther.getGroup())))
-				&& ((this.getUser() == castOther.getUser()) || (this.getUser() != null
-						&& castOther.getUser() != null && this.getUser()
-						.equals(castOther.getUser())));
+		return ((this.getGroupId() == castOther.getGroupId()) || (this
+				.getGroupId() != null && castOther.getGroupId() != null && this
+				.getGroupId().equals(castOther.getGroupId())))
+				&& ((this.getUserId() == castOther.getUserId()) || (this
+						.getUserId() != null && castOther.getUserId() != null && this
+						.getUserId().equals(castOther.getUserId())));
 	}
 
 	public int hashCode() {
 		int result = 17;
 
 		result = 37 * result
-				+ (getGroup() == null ? 0 : this.getGroup().hashCode());
+				+ (getGroupId() == null ? 0 : this.getGroupId().hashCode());
 		result = 37 * result
-				+ (getUser() == null ? 0 : this.getUser().hashCode());
+				+ (getUserId() == null ? 0 : this.getUserId().hashCode());
 		return result;
 	}
 

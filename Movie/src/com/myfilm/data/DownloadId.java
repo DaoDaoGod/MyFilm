@@ -1,14 +1,17 @@
 package com.myfilm.data;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * DownloadId entity. @author MyEclipse Persistence Tools
  */
-
+@Embeddable
 public class DownloadId implements java.io.Serializable {
 
 	// Fields
 
-	private Film film;
+	private Integer filmId;
 	private Integer dowloadId;
 
 	// Constructors
@@ -18,21 +21,23 @@ public class DownloadId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public DownloadId(Film film, Integer dowloadId) {
-		this.film = film;
+	public DownloadId(Integer filmId, Integer dowloadId) {
+		this.filmId = filmId;
 		this.dowloadId = dowloadId;
 	}
 
 	// Property accessors
 
-	public Film getFilm() {
-		return this.film;
+	@Column(name = "film_id", nullable = false)
+	public Integer getFilmId() {
+		return this.filmId;
 	}
 
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setFilmId(Integer filmId) {
+		this.filmId = filmId;
 	}
 
+	@Column(name = "dowload_id", nullable = false)
 	public Integer getDowloadId() {
 		return this.dowloadId;
 	}
@@ -50,9 +55,9 @@ public class DownloadId implements java.io.Serializable {
 			return false;
 		DownloadId castOther = (DownloadId) other;
 
-		return ((this.getFilm() == castOther.getFilm()) || (this.getFilm() != null
-				&& castOther.getFilm() != null && this.getFilm().equals(
-				castOther.getFilm())))
+		return ((this.getFilmId() == castOther.getFilmId()) || (this
+				.getFilmId() != null && castOther.getFilmId() != null && this
+				.getFilmId().equals(castOther.getFilmId())))
 				&& ((this.getDowloadId() == castOther.getDowloadId()) || (this
 						.getDowloadId() != null
 						&& castOther.getDowloadId() != null && this
@@ -63,7 +68,7 @@ public class DownloadId implements java.io.Serializable {
 		int result = 17;
 
 		result = 37 * result
-				+ (getFilm() == null ? 0 : this.getFilm().hashCode());
+				+ (getFilmId() == null ? 0 : this.getFilmId().hashCode());
 		result = 37 * result
 				+ (getDowloadId() == null ? 0 : this.getDowloadId().hashCode());
 		return result;

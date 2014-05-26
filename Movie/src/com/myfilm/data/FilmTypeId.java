@@ -1,15 +1,18 @@
 package com.myfilm.data;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * FilmTypeId entity. @author MyEclipse Persistence Tools
  */
-
+@Embeddable
 public class FilmTypeId implements java.io.Serializable {
 
 	// Fields
 
-	private Type type;
-	private Film film;
+	private Integer typeId;
+	private Integer filmId;
 
 	// Constructors
 
@@ -18,27 +21,29 @@ public class FilmTypeId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public FilmTypeId(Type type, Film film) {
-		this.type = type;
-		this.film = film;
+	public FilmTypeId(Integer typeId, Integer filmId) {
+		this.typeId = typeId;
+		this.filmId = filmId;
 	}
 
 	// Property accessors
 
-	public Type getType() {
-		return this.type;
+	@Column(name = "type_id", nullable = false)
+	public Integer getTypeId() {
+		return this.typeId;
 	}
 
-	public void setType(Type type) {
-		this.type = type;
+	public void setTypeId(Integer typeId) {
+		this.typeId = typeId;
 	}
 
-	public Film getFilm() {
-		return this.film;
+	@Column(name = "film_id", nullable = false)
+	public Integer getFilmId() {
+		return this.filmId;
 	}
 
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setFilmId(Integer filmId) {
+		this.filmId = filmId;
 	}
 
 	public boolean equals(Object other) {
@@ -50,21 +55,21 @@ public class FilmTypeId implements java.io.Serializable {
 			return false;
 		FilmTypeId castOther = (FilmTypeId) other;
 
-		return ((this.getType() == castOther.getType()) || (this.getType() != null
-				&& castOther.getType() != null && this.getType().equals(
-				castOther.getType())))
-				&& ((this.getFilm() == castOther.getFilm()) || (this.getFilm() != null
-						&& castOther.getFilm() != null && this.getFilm()
-						.equals(castOther.getFilm())));
+		return ((this.getTypeId() == castOther.getTypeId()) || (this
+				.getTypeId() != null && castOther.getTypeId() != null && this
+				.getTypeId().equals(castOther.getTypeId())))
+				&& ((this.getFilmId() == castOther.getFilmId()) || (this
+						.getFilmId() != null && castOther.getFilmId() != null && this
+						.getFilmId().equals(castOther.getFilmId())));
 	}
 
 	public int hashCode() {
 		int result = 17;
 
 		result = 37 * result
-				+ (getType() == null ? 0 : this.getType().hashCode());
+				+ (getTypeId() == null ? 0 : this.getTypeId().hashCode());
 		result = 37 * result
-				+ (getFilm() == null ? 0 : this.getFilm().hashCode());
+				+ (getFilmId() == null ? 0 : this.getFilmId().hashCode());
 		return result;
 	}
 

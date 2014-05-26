@@ -1,15 +1,18 @@
 package com.myfilm.data;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * FilmGroupId entity. @author MyEclipse Persistence Tools
  */
-
+@Embeddable
 public class FilmGroupId implements java.io.Serializable {
 
 	// Fields
 
-	private Film film;
-	private Group group;
+	private Integer filmId;
+	private Integer groupId;
 
 	// Constructors
 
@@ -18,27 +21,29 @@ public class FilmGroupId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public FilmGroupId(Film film, Group group) {
-		this.film = film;
-		this.group = group;
+	public FilmGroupId(Integer filmId, Integer groupId) {
+		this.filmId = filmId;
+		this.groupId = groupId;
 	}
 
 	// Property accessors
 
-	public Film getFilm() {
-		return this.film;
+	@Column(name = "film_id", nullable = false)
+	public Integer getFilmId() {
+		return this.filmId;
 	}
 
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setFilmId(Integer filmId) {
+		this.filmId = filmId;
 	}
 
-	public Group getGroup() {
-		return this.group;
+	@Column(name = "group_id", nullable = false)
+	public Integer getGroupId() {
+		return this.groupId;
 	}
 
-	public void setGroup(Group group) {
-		this.group = group;
+	public void setGroupId(Integer groupId) {
+		this.groupId = groupId;
 	}
 
 	public boolean equals(Object other) {
@@ -50,21 +55,21 @@ public class FilmGroupId implements java.io.Serializable {
 			return false;
 		FilmGroupId castOther = (FilmGroupId) other;
 
-		return ((this.getFilm() == castOther.getFilm()) || (this.getFilm() != null
-				&& castOther.getFilm() != null && this.getFilm().equals(
-				castOther.getFilm())))
-				&& ((this.getGroup() == castOther.getGroup()) || (this
-						.getGroup() != null && castOther.getGroup() != null && this
-						.getGroup().equals(castOther.getGroup())));
+		return ((this.getFilmId() == castOther.getFilmId()) || (this
+				.getFilmId() != null && castOther.getFilmId() != null && this
+				.getFilmId().equals(castOther.getFilmId())))
+				&& ((this.getGroupId() == castOther.getGroupId()) || (this
+						.getGroupId() != null && castOther.getGroupId() != null && this
+						.getGroupId().equals(castOther.getGroupId())));
 	}
 
 	public int hashCode() {
 		int result = 17;
 
 		result = 37 * result
-				+ (getFilm() == null ? 0 : this.getFilm().hashCode());
+				+ (getFilmId() == null ? 0 : this.getFilmId().hashCode());
 		result = 37 * result
-				+ (getGroup() == null ? 0 : this.getGroup().hashCode());
+				+ (getGroupId() == null ? 0 : this.getGroupId().hashCode());
 		return result;
 	}
 

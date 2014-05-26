@@ -1,16 +1,19 @@
 package com.myfilm.data;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * GroupCommentId entity. @author MyEclipse Persistence Tools
  */
-
+@Embeddable
 public class GroupCommentId implements java.io.Serializable {
 
 	// Fields
 
 	private Integer commentId;
-	private User user;
-	private Group group;
+	private Integer userId;
+	private Integer groupId;
 
 	// Constructors
 
@@ -19,14 +22,15 @@ public class GroupCommentId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public GroupCommentId(Integer commentId, User user, Group group) {
+	public GroupCommentId(Integer commentId, Integer userId, Integer groupId) {
 		this.commentId = commentId;
-		this.user = user;
-		this.group = group;
+		this.userId = userId;
+		this.groupId = groupId;
 	}
 
 	// Property accessors
 
+	@Column(name = "comment_id", nullable = false)
 	public Integer getCommentId() {
 		return this.commentId;
 	}
@@ -35,20 +39,22 @@ public class GroupCommentId implements java.io.Serializable {
 		this.commentId = commentId;
 	}
 
-	public User getUser() {
-		return this.user;
+	@Column(name = "user_id", nullable = false)
+	public Integer getUserId() {
+		return this.userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	public Group getGroup() {
-		return this.group;
+	@Column(name = "group_id", nullable = false)
+	public Integer getGroupId() {
+		return this.groupId;
 	}
 
-	public void setGroup(Group group) {
-		this.group = group;
+	public void setGroupId(Integer groupId) {
+		this.groupId = groupId;
 	}
 
 	public boolean equals(Object other) {
@@ -63,12 +69,12 @@ public class GroupCommentId implements java.io.Serializable {
 		return ((this.getCommentId() == castOther.getCommentId()) || (this
 				.getCommentId() != null && castOther.getCommentId() != null && this
 				.getCommentId().equals(castOther.getCommentId())))
-				&& ((this.getUser() == castOther.getUser()) || (this.getUser() != null
-						&& castOther.getUser() != null && this.getUser()
-						.equals(castOther.getUser())))
-				&& ((this.getGroup() == castOther.getGroup()) || (this
-						.getGroup() != null && castOther.getGroup() != null && this
-						.getGroup().equals(castOther.getGroup())));
+				&& ((this.getUserId() == castOther.getUserId()) || (this
+						.getUserId() != null && castOther.getUserId() != null && this
+						.getUserId().equals(castOther.getUserId())))
+				&& ((this.getGroupId() == castOther.getGroupId()) || (this
+						.getGroupId() != null && castOther.getGroupId() != null && this
+						.getGroupId().equals(castOther.getGroupId())));
 	}
 
 	public int hashCode() {
@@ -77,9 +83,9 @@ public class GroupCommentId implements java.io.Serializable {
 		result = 37 * result
 				+ (getCommentId() == null ? 0 : this.getCommentId().hashCode());
 		result = 37 * result
-				+ (getUser() == null ? 0 : this.getUser().hashCode());
+				+ (getUserId() == null ? 0 : this.getUserId().hashCode());
 		result = 37 * result
-				+ (getGroup() == null ? 0 : this.getGroup().hashCode());
+				+ (getGroupId() == null ? 0 : this.getGroupId().hashCode());
 		return result;
 	}
 

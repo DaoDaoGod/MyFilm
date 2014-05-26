@@ -63,10 +63,11 @@ public class PhotoDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(Photo instance) {
+	public List<Photo> findByExample(Photo instance) {
 		log.debug("finding Photo instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<Photo> results = (List<Photo>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -89,15 +90,15 @@ public class PhotoDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByPhotolink(Object photolink) {
+	public List<Photo> findByPhotolink(Object photolink) {
 		return findByProperty(PHOTOLINK, photolink);
 	}
 
-	public List findByIsmainphoto(Object ismainphoto) {
+	public List<Photo> findByIsmainphoto(Object ismainphoto) {
 		return findByProperty(ISMAINPHOTO, ismainphoto);
 	}
 
-	public List findByPhotocol(Object photocol) {
+	public List<Photo> findByPhotocol(Object photocol) {
 		return findByProperty(PHOTOCOL, photocol);
 	}
 

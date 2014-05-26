@@ -62,10 +62,11 @@ public class DownloadDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(Download instance) {
+	public List<Download> findByExample(Download instance) {
 		log.debug("finding Download instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<Download> results = (List<Download>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -88,7 +89,7 @@ public class DownloadDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByDowloadLink(Object dowloadLink) {
+	public List<Download> findByDowloadLink(Object dowloadLink) {
 		return findByProperty(DOWLOAD_LINK, dowloadLink);
 	}
 

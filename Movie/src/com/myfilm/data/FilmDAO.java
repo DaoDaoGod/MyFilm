@@ -28,7 +28,7 @@ public class FilmDAO extends HibernateDaoSupport {
 	public static final String DIRECTOR = "director";
 	public static final String DURATION = "duration";
 	public static final String DBLINK = "dblink";
-	public static final String IMDBLINK = "imdblink";
+	public static final String DBGRADE = "dbgrade";
 	public static final String HOTGRADE = "hotgrade";
 	public static final String OTHERNAME = "othername";
 
@@ -70,10 +70,11 @@ public class FilmDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(Film instance) {
+	public List<Film> findByExample(Film instance) {
 		log.debug("finding Film instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<Film> results = (List<Film>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -96,35 +97,35 @@ public class FilmDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByName(Object name) {
+	public List<Film> findByName(Object name) {
 		return findByProperty(NAME, name);
 	}
 
-	public List findByDescription(Object description) {
+	public List<Film> findByDescription(Object description) {
 		return findByProperty(DESCRIPTION, description);
 	}
 
-	public List findByDirector(Object director) {
+	public List<Film> findByDirector(Object director) {
 		return findByProperty(DIRECTOR, director);
 	}
 
-	public List findByDuration(Object duration) {
+	public List<Film> findByDuration(Object duration) {
 		return findByProperty(DURATION, duration);
 	}
 
-	public List findByDblink(Object dblink) {
+	public List<Film> findByDblink(Object dblink) {
 		return findByProperty(DBLINK, dblink);
 	}
 
-	public List findByImdblink(Object imdblink) {
-		return findByProperty(IMDBLINK, imdblink);
+	public List<Film> findByDbgrade(Object dbgrade) {
+		return findByProperty(DBGRADE, dbgrade);
 	}
 
-	public List findByHotgrade(Object hotgrade) {
+	public List<Film> findByHotgrade(Object hotgrade) {
 		return findByProperty(HOTGRADE, hotgrade);
 	}
 
-	public List findByOthername(Object othername) {
+	public List<Film> findByOthername(Object othername) {
 		return findByProperty(OTHERNAME, othername);
 	}
 

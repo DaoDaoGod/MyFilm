@@ -63,10 +63,11 @@ public class FilmUserDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByExample(FilmUser instance) {
+	public List<FilmUser> findByExample(FilmUser instance) {
 		log.debug("finding FilmUser instance by example");
 		try {
-			List results = getHibernateTemplate().findByExample(instance);
+			List<FilmUser> results = (List<FilmUser>) getHibernateTemplate()
+					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -89,11 +90,11 @@ public class FilmUserDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByLikestate(Object likestate) {
+	public List<FilmUser> findByLikestate(Object likestate) {
 		return findByProperty(LIKESTATE, likestate);
 	}
 
-	public List findByWatchstate(Object watchstate) {
+	public List<FilmUser> findByWatchstate(Object watchstate) {
 		return findByProperty(WATCHSTATE, watchstate);
 	}
 

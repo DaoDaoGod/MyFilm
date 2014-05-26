@@ -72,7 +72,7 @@ public class FilmServiceImpl implements FilmServiceInf {
 
 	@Override
 	public List<FilmBean> getHotMovie() {
-		float hotgrade = 4;
+		int hotgrade = 3;
 		List<Film> list = filmDao.findByHotgrade(hotgrade);
 		List<FilmBean> result = new ArrayList<FilmBean>();
 		for (int i = 0; i < list.size(); i++) {
@@ -89,7 +89,7 @@ public class FilmServiceImpl implements FilmServiceInf {
 		return result;
 	}
 	@Override
-	public List<FilmBean> getHotMovieByPage(int pagenum,float hotgrade) {
+	public List<FilmBean> getHotMovieByPage(int pagenum,int hotgrade) {
 		// TODO Auto-generated method stub
 		List<Film> list = filmDao.findByHotgrade(hotgrade);
 		List<FilmBean> result = new ArrayList<FilmBean>();
@@ -110,7 +110,7 @@ public class FilmServiceImpl implements FilmServiceInf {
 	@Override
 	public List<FilmBean> getUpComings() {
 		// TODO Auto-generated method stub
-		float hotgrade=4;
+		int hotgrade=3;
 		List<Film> list = filmDao.findByHotgrade(hotgrade);
 		List<FilmBean> result = new ArrayList<FilmBean>();
 		for (int i = 0; i < list.size(); i++) {
@@ -138,6 +138,7 @@ public class FilmServiceImpl implements FilmServiceInf {
 		filmBean.setFilmlength(newFilm.getDuration().toString());
 		filmBean.setFilmupdate(newFilm.getUpdate().toString());
 		filmBean.setFilmothername(newFilm.getOthername());
+		filmBean.setDbgrade(newFilm.getDbgrade());
 		filmBean.setName(newFilm.getName());
 		filmBean.setDblink(newFilm.getDblink());
 
@@ -147,7 +148,7 @@ public class FilmServiceImpl implements FilmServiceInf {
 	     while(acIterator.hasNext())
 	      {
 	    	  FilmActor actor=(FilmActor) acIterator.next();
-	          actorSet.add(actor.getId().getActor().getActor());
+	          actorSet.add(actor.getActor().getActor());
 	      }
 	   filmBean.setFilmactor(actorSet);
 	   
@@ -157,7 +158,7 @@ public class FilmServiceImpl implements FilmServiceInf {
 	     while(tyIterator.hasNext())
 	      {
 	    	  FilmType type=(FilmType) tyIterator.next();
-	          typeSet.add(type.getId().getType().getType());
+	          typeSet.add(type.getType().getType());
 	          
 	      }
 	   filmBean.setFilmtype(typeSet);
@@ -168,7 +169,7 @@ public class FilmServiceImpl implements FilmServiceInf {
 	   while(pcIterator.hasNext())
 	   {
 		   FilmPlace place=(FilmPlace) pcIterator.next();
-		   placeSet.add(place.getId().getPlace().getPlace());
+		   placeSet.add(place.getPlace().getPlace());
 	   }
 	   
 	   filmBean.setFilmplace(placeSet); 
