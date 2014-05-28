@@ -3,6 +3,8 @@ package com.myfilm.data;
 import java.sql.Timestamp;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -10,6 +12,10 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+
+
+
 
 /**
  * Comment entity. @author MyEclipse Persistence Tools
@@ -26,7 +32,7 @@ public class Comment implements java.io.Serializable {
 	private String email;
 	private String username;
 	private String content;
-	private Timestamp addTime;
+	private Timestamp addTime= new Timestamp(System.currentTimeMillis());
 
 	// Constructors
 
@@ -67,7 +73,7 @@ public class Comment implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
 	public User getUser() {
 		return this.user;
@@ -77,7 +83,7 @@ public class Comment implements java.io.Serializable {
 		this.user = user;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "film_id", nullable = false, insertable = false, updatable = false)
 	public Film getFilm() {
 		return this.film;

@@ -74,6 +74,8 @@
 	</bean>
 		<bean id="FilmService" class="com.myfilm.service.FilmServiceImpl">
 	 <property name="filmDao" ref="FilmDAO"></property>
+	 <property name="userDao" ref="UserDAO"></property>
+	 <property name="commentDao" ref="CommentDAO"></property>
 	</bean>
 	<bean id="UserGroupDAO" class="com.myfilm.data.UserGroupDAO"><property name="sessionFactory" ref="sessionFactory"/>
 	</bean></beans>

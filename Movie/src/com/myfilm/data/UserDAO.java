@@ -3,7 +3,12 @@ package com.myfilm.data;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+
+
+
 import org.hibernate.LockMode;
+import org.hibernate.Transaction;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -35,6 +40,7 @@ public class UserDAO extends HibernateDaoSupport {
 
 	public void save(User transientInstance) {
 		log.debug("saving User instance");
+		//Transaction tran=getSession().beginTransaction();
 		try {
 			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
@@ -42,6 +48,9 @@ public class UserDAO extends HibernateDaoSupport {
 			log.error("save failed", re);
 			throw re;
 		}
+		 //tran.commit();
+         //getSession().flush(); 
+         //getSession().close();
 	}
 
 	public void delete(User persistentInstance) {

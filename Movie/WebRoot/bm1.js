@@ -1,7 +1,4 @@
 ﻿var curnum=0;
-var curuser=0;
-var curuserid=0;
-var curfilmid=0;
 function init()
 {
 	getViewList(0,3);
@@ -197,20 +194,20 @@ function smCb(data)
     imgel.innerHTML='<img src="'+data['photoset'][0]['photolink']+'" alt="photo" style="max-height:400px;" />';
    imgElement.appendChild(imgel);
    
- 
+   
 	var commentElement = document.getElementById("commentlist");
 	commentElement.innerHTML="";
     var commentel=document.createElement("div");
-    var comments='';
-    for(var i=0;i<data['commentlist'].length;i++)
+    var commentlist='';
+    for(var i=0;i<data['commentSet'].length;i++)
     {
-    	comments=comments+'<li class="clearfix comments_li">'+
+    	commentlist=commentlist+'<li class="clearfix comments_li">'+
         '<img src="images/avatar.png" alt="avatar" class="avatar" />'+
         '<div class="textarea">'+
-        '<p class="meta">'+data['commentlist'][i]['addTime']+data['commentlist'][i]['nickname']+'says:</p><p>'+ data['commentlist'][i]['content']+
+        '<p class="meta">'+data['commentSet'][i]['addTime']+data['commentSet'][i]['username']+'says:</p><p>'+ data['commentSet'][i]['content']+
         '</p></div></li>';
     }
-    commentel.innerHTML=comments;
+    commentel.innerHTML=commentlist;
     commentElement.appendChild(commentel);
 }
 
@@ -219,114 +216,10 @@ function register()
   var useremail=dwr.util.getValue("registeruser");	
   var userpass=dwr.util.getValue("registerpass");
   var userrepass=dwr.util.getValue("registerrepass");
-  if(userpass!=userrepass) alert("密码不一致");
+  if(userpass!=userrepass) alert("错误");
   else
   {
-	  if(useremail!=null&&useremail!=""&&userpass!=null&&userrepass!="")
-      {
-
-		  bm.createUser(useremail,userpass,registCb);
-		  
-      }
+	  alert(userpass);
   }
 
-}
-function registCb(data)
-{
-	if(data==0)
-	{
-		 var url = location.href;
-		 window.location=url;
-		 dwr.util.setValue("registeruser","");
-		 dwr.util.setValue("registerpass","");
-		 dwr.util.setValue("registerrepass","");
-	}
-	else if (data==2)
-	{
-		 alert("非常遗憾,已注册相同用户名的账户,请重新注册");
-		 dwr.util.setValue("registeruser","");
-		 dwr.util.setValue("registerpass","");
-		 dwr.util.setValue("registerrepass","");
-	}
-	else
-	{
-		 alert("非常遗憾,由于系统原因，你没有注册成功，请重新注册");
-		 dwr.util.setValue("registeruser","");
-		 dwr.util.setValue("registerpass","");
-		 dwr.util.setValue("registerrepass","");
-	}
-}
-
-function login()
-{
-	  var useremail=dwr.util.getValue("loginuser");	
-	  var userpass=dwr.util.getValue("loginpass");
-	  if(useremail!=null&&useremail!=""&&userpass!=null&&userpass!="")
-	  {
-		 bm.login(useremail,userpass,loginCb);  
-	  }
-	  else
-	  {
-		  alert("请输入用户名或密码");
-	  }
-}
-function loginCb(data)
-{
-	  if(data!=-1)
-	  {
-			 var url = location.href;
-			 window.location=url;
-			 dwr.util.setValue("loginuser","");
-			 dwr.util.setValue("loginpass","");
-	  }
-	  else
-	  {
-		     alert("登陆失败，请检查用户名和密码");
-		     dwr.util.setValue("loginuser","");
-		     dwr.util.setValue("loginpass","");
-	  }
-}
-function islogin()
-{
-	bm.isLogin(isLoginCb);
-}
-function isLoginCb(data)
-{
-		if(data!=null)
-		{
-		curuser=data;
-		curuserid=data['userId'];
-		var loginElement = document.getElementById("registeraccount");
-		var loginElement1 = document.getElementById("loginaccount");
-		loginElement.innerHTML='<a href="#">退出</a>';
-		loginElement1.innerHTML='<a href="#">'+data['nickname']+'</a>';
-		
-		var loginElement2 = document.getElementById("commentnickname");
-		var loginElement3 = document.getElementById("commentemail");
-		loginElement2.innerHTML="";
-		loginElement3.innerHTML="";
-		
-		}
-		
-}
-function getparm() {
-    var url = location.href;
-    var tmp1 = url.split("?")[1];
-    var tmp2 = tmp1.split("=")[1];
-    var parm = tmp2;
-    curfilmid=parm;
-    showMovie(parm);
-}
-function addcomment()
-{
-	var content=dwr.util.getValue("commentinput");
-	bm.addNewComment(curfilmid,curuserid,content,fcCb);
-}
-function fcCb(data)
-{
-	if(data==0)
-	{
-	 var url = location.href;
-	 window.location=url;
-	}
 }

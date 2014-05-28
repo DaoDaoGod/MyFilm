@@ -1,13 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en">
-<!--<![endif]-->
 
+<html>
 <head>
-    <meta name="viewport" content="width=100%; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;" />
+   
     <link rel="icon" href="images/favicon.png" type="image/png" />
     <link rel="shortcut icon" href="images/favicon.png" type="image/png" />
     <title>影片信息及下载</title>
@@ -35,12 +30,9 @@
     <script type='text/javascript' src='dwr/engine.js'></script>
     <script type='text/javascript' src='dwr/util.js'></script>
     <script type="text/javascript" src="bm.js"></script>
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <link href="css/ie.css" type="text/css" rel="stylesheet"/>
-    <![endif]-->
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript">
+   <!--  <script type="text/javascript">
         function getparm() {
             var url = location.href;
             var tmp1 = url.split("?")[1];
@@ -48,10 +40,11 @@
             var parm = tmp2;
             showMovie(parm);
         }
-    </script>
+    </script> -->
+     
 </head>
 
-<body onload="getparm()">
+<body onload="getparm();islogin();" style="font-family:微软雅黑;">
     <!-- header -->
     <header id="header">
 
@@ -79,20 +72,21 @@
                 </li>
                 <li>
                     <form id="search" class="input-append" >
-
                     <input class="" id="appendedInputButton" size="16" type="text" value="搜索..." name="search site" onFocus="if(this.value=='Search...') this.value=''" onBlur="if(this.value=='') this.value='...'" />
                     <input class="btn search-bt" type="submit" name="submit" value="" />
                     </form>
                 </li>
-                <li >
+                <li id="loginaccount">
+                   
                     <a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;margin-left:70px;"> <i class="icon-user icon-white"></i> <span style="font-family:微软雅黑;">登录 </span>
                     </a>
+                    
                 </li>
-                
-                <li>
-                    <a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;">
-                        <span style="font-family:微软雅黑;"> 注册</span> 
+                <li id="registeraccount">
+                   
+                    <a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;"> <span style="font-family:微软雅黑;"> 注册</span> 
                     </a>
+                    
                 </li>
                 
             </ul>
@@ -100,7 +94,7 @@
 
     </header>
     <!--login-->
-    <div class="modal hide" id="login1"> <a href="#" class="close" data-dismiss="modal">关闭*</a>
+    <div class="modal hide" id="login1"> <a href="#" class="close" data-dismiss="modal">×</a>
         <form>
             <div class="modal-header">
                 <h3>用户登录</h3>
@@ -109,29 +103,27 @@
                 <div class="control-group">
                     <label class="control-label" for="user">用户名</label>
                     <div class="controls">
-                        <input id="user" type="text" placeholder="输入用户名" class="span3">
-                        <!-- palceholder用于文本框中显示提示性字体-->
-                        <p class="help-blaock">在这里输入用户名</p>
+                        <input id="loginuser" type="text" placeholder="输入用户名" class="span3">
+                       
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="user">密码</label>
                     <div class="controls">
-                        <input id="user" type="text" placeholder="输入密码" class="span3">
-                        <!-- palceholder用于文本框中显示提示性字体-->
-                        <p class="help-blaock">在这里输入密码</p>
+                        <input id="loginpass" type="password" placeholder="输入密码" class="span3">
+               
                     </div>
                 </div>
             </div>
         </form>
         <div class="modal-footer">
             <div class="form-actions">
-                <button class="btn btn-primary" type="submit">登录</button>
+                <button class="btn btn-primary" type="submit" onclick="login();">登录</button>
             </div>
         </div>
     </div>
     <!--register-->
-    <div class="modal hide" id="register1"> <a href="#" class="close" data-dismiss="modal">关闭*</a>
+    <div class="modal hide" id="register1"> <a href="#" class="close" data-dismiss="modal">×</a>
         <form>
             <div class="modal-header">
                 <h3>新用户注册</h3>
@@ -140,32 +132,27 @@
                 <div class="control-group">
                     <label class="control-label" for="user">用户名</label>
                     <div class="controls">
-                        <input id="user" type="text" placeholder="输入用户名" class="span3">
-                        <!-- palceholder用于文本框中显示提示性字体-->
-                        <p class="help-blaock">在这里输入用户名</p>
+                        <input id="registeruser" type="text" placeholder="输入用户名" class="span3">
+                    
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="user">密码</label>
                     <div class="controls">
-                        <input id="user" type="text" placeholder="输入密码" class="span3">
-                        <!-- palceholder用于文本框中显示提示性字体-->
-                        <p class="help-blaock">在这里输入密码</p>
+                        <input id="registerpass" type="password" placeholder="输入密码" class="span3">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="user">确认密码</label>
                     <div class="controls">
-                        <input id="user" type="text" placeholder="输入新密码" class="span3">
-                        <!-- palceholder用于文本框中显示提示性字体-->
-                        <p class="help-blaock">在这里确认密码</p>
+                        <input id="registerrepass" type="password" placeholder="输入新密码" class="span3">
                     </div>
                 </div>
             </div>
         </form>
         <div class="modal-footer">
             <div class="form-actions">
-                <button class="btn btn-primary" type="submit">完成</button>
+                <button class="btn btn-primary" type="submit" onclick="register();">完成</button>
             </div>
         </div>
     </div>
@@ -203,7 +190,7 @@
 
                                                                     </div>
                                                                     <!-- Tabs -->
-                <table class="table table-condensed table-striped table-bordered">
+                <table class="table table-condensed table-striped table-bordered" style="font-family:微软雅黑;">
                             <tr>
                             <td class="span2"><span class="x-m-label">导演</span></td>
                             <td id="director"><div><a href="#">郭帆</a></div></td>
@@ -298,7 +285,8 @@
                            <div class="divider-arrow"></div>
                            </div>
                            <div class="comments">
-                           <ul class="comments-list">
+                           <ul id="commentlist" class="comments-list">
+                           <div>
                            <li class="clearfix comments_li">
                            <img src="images/avatar.png" alt="avatar" class="avatar" />
                            <div class="textarea">
@@ -307,17 +295,20 @@
                            </p>
                            </div>
                            </li>
-                           <li>
-                           <div>
-                           <img src="images/avatar.png" alt="avatar" class="avatar" />
                            </div>
-                           <div class="textarea last">
-                           <p class="meta">May 16, 2012 Designmd says:</p>
-                           <p>
-                            scelerisque felis. Maecenas tincidunt ligula eu magna tincidunt eget imperdiet erat malesuada. Ut in diam et metus facilisis venenatis sit amet vel enim.
+                           <div>
+                           <li class="clearfix comments_li">
+                           <img src="images/avatar.png" alt="avatar" class="avatar" />
+                           <div class="textarea">
+                           <p class="meta">May 18, 2012 Designmd says:</p>
+                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a sapien odio, sit amet
                            </p>
                            </div>
                            </li>
+                           </div>
+              
+                             
+                            
                            </ul>
                            </div>
                            <hr/>
@@ -326,14 +317,14 @@
                            <div class="divider-arrow"></div>
                            </div>
                            <form name="comment" method="post" action="" class="af-form" id="af-form" >
-                           <div class="af-outer af-required">
+                           <div id="commentnickname" class="af-outer af-required">
                            <div class="af-inner">
                            <label for="name" id="name_label">昵称:</label>
                            <input type="text" name="name" id="name" size="30" value="" class="text-input input-xlarge" />
                            <label class="error" for="name" id="name_error">昵称未填写</label>
                            </div>
                            </div>
-                           <div class="af-outer af-required">
+                           <div id="commentemail" class="af-outer af-required">
                            <div class="af-inner">
                            <label for="email" id="email_label">Email:</label>
                            <input type="text" name="email" id="email" size="30" value="" class="text-input input-xlarge" />
@@ -343,13 +334,13 @@
                            <div class="af-outer af-required">
                            <div class="af-inner">
                            <label for="input-message" id="message_label">添加评论:</label>
-                           <textarea name="message" id="input-message" cols="30" class="text-input"></textarea>
+                           <textarea name="message" id="commentinput" cols="30" class="text-input"></textarea>
                            <label class="error" for="input-message" id="message_error">Message is required.</label>
                            </div>
                            </div>
                            <div class="af-outer af-required">
                            <div class="af-inner">
-                           <input type="submit" name="submit" class="form-button btn btn-large" id="submit_btn" value="Send Message!" />
+                           <input type="submit" name="submit" class="form-button btn btn-large" onclick="addcomment();" value="发表评论" />
                            </div>
                            </div>
                            </form>

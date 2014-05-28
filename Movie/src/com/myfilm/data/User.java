@@ -159,7 +159,7 @@ public class User implements java.io.Serializable {
 		this.filmUsers = filmUsers;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<Comment> getComments() {
 		return this.comments;
 	}

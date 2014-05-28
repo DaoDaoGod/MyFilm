@@ -1,7 +1,5 @@
 ﻿var curnum=0;
 var curuser=0;
-var curuserid=0;
-var curfilmid=0;
 function init()
 {
 	getViewList(0,3);
@@ -197,20 +195,20 @@ function smCb(data)
     imgel.innerHTML='<img src="'+data['photoset'][0]['photolink']+'" alt="photo" style="max-height:400px;" />';
    imgElement.appendChild(imgel);
    
- 
+   
 	var commentElement = document.getElementById("commentlist");
 	commentElement.innerHTML="";
     var commentel=document.createElement("div");
-    var comments='';
-    for(var i=0;i<data['commentlist'].length;i++)
+    var commentlist='';
+    for(var i=0;i<data['commentSet'].length;i++)
     {
-    	comments=comments+'<li class="clearfix comments_li">'+
+    	commentlist=commentlist+'<li class="clearfix comments_li">'+
         '<img src="images/avatar.png" alt="avatar" class="avatar" />'+
         '<div class="textarea">'+
-        '<p class="meta">'+data['commentlist'][i]['addTime']+data['commentlist'][i]['nickname']+'says:</p><p>'+ data['commentlist'][i]['content']+
+        '<p class="meta">'+data['commentSet'][i]['addTime']+data['commentSet'][i]['username']+'says:</p><p>'+ data['commentSet'][i]['content']+
         '</p></div></li>';
     }
-    commentel.innerHTML=comments;
+    commentel.innerHTML=commentlist;
     commentElement.appendChild(commentel);
 }
 
@@ -292,41 +290,14 @@ function islogin()
 }
 function isLoginCb(data)
 {
-		if(data!=null)
-		{
+	if(data>0)
+    {
 		curuser=data;
-		curuserid=data['userId'];
 		var loginElement = document.getElementById("registeraccount");
+		loginElement.innerHTML="";
 		var loginElement1 = document.getElementById("loginaccount");
-		loginElement.innerHTML='<a href="#">退出</a>';
-		loginElement1.innerHTML='<a href="#">'+data['nickname']+'</a>';
+		loginElement1.innerHTML="";
 		
-		var loginElement2 = document.getElementById("commentnickname");
-		var loginElement3 = document.getElementById("commentemail");
-		loginElement2.innerHTML="";
-		loginElement3.innerHTML="";
 		
-		}
-		
-}
-function getparm() {
-    var url = location.href;
-    var tmp1 = url.split("?")[1];
-    var tmp2 = tmp1.split("=")[1];
-    var parm = tmp2;
-    curfilmid=parm;
-    showMovie(parm);
-}
-function addcomment()
-{
-	var content=dwr.util.getValue("commentinput");
-	bm.addNewComment(curfilmid,curuserid,content,fcCb);
-}
-function fcCb(data)
-{
-	if(data==0)
-	{
-	 var url = location.href;
-	 window.location=url;
-	}
+    }
 }

@@ -1,8 +1,10 @@
 package com.myfilm.bean;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
+import com.myfilm.data.Comment;
 import com.myfilm.data.Photo;
 
 public class FilmBean {
@@ -93,6 +95,12 @@ public class FilmBean {
 	public void setDbgrade(float dbgrade) {
 		this.dbgrade = dbgrade;
 	}
+	public Set<Comment> getCommentSet() {
+		return commentSet;
+	}
+	public void setCommentSet(Set<Comment> commentSet) {
+		this.commentSet = commentSet;
+	}
 	private String name;
 	private String description;
 	private String filmdirector;
@@ -104,6 +112,24 @@ public class FilmBean {
 	private Set<String> filmtype;
 	private Set<String> filmplace;
 	private Set<Photo> photoset;
+	private Set<Comment> commentSet;
+	private Set<CommentBean> comments;
+	private List<CommentBean> commentlist;
+
+	public List<CommentBean> getCommentlist() {
+		return commentlist;
+	}
+	public void setCommentlist(List<CommentBean> commentlist) {
+		this.commentlist = commentlist;
+	}
+	public Set<CommentBean> getComments() {
+		return comments;
+	}
+	public void setComments(Set<CommentBean> comments) {
+		this.comments = comments;
+	}
+	
+
 	
 
 }

@@ -28,23 +28,23 @@ public class UserBean {
 	public void setGender(Boolean gender) {
 		this.gender = gender;
 	}
-	public Date getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
+
 	private int userId;
 	private String email;
 	private String nickname;
 	private Boolean gender;
-	private Date birthday;
-	public UserBean(int id,String email,String nickname,Boolean gender,Date birthday)
-	{
-		this.userId=id;
-		this.email=email;
-		this.nickname=nickname;
-		this.gender=gender;
-		this.birthday=birthday;
+	private String birthday;
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public UserBean() {
+		// TODO Auto-generated constructor stub
 	}
 }

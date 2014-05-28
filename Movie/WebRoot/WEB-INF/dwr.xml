@@ -12,9 +12,20 @@
  <include method="getHotMovieByPage"/>
  <include method="getUpComings"/> 
  <include method="getFilmById"/> 
+ <include method="createUser"/>
+ <include method="valid"/>
+ <include method="login"/>
+ <include method="isLogin"/>
+ <include method="getUserById"/>
+ <include method="addNewComment"/> 
+ 
 </create>
 <convert match="com.myfilm.data.Film" converter="class"></convert>
 <convert match="com.myfilm.data.Photo" converter="bean"></convert>
+<convert match="com.myfilm.data.User" converter="bean"></convert>
+<convert match="com.myfilm.bean.UserBean" converter="bean"></convert>
+<convert match="com.myfilm.bean.CommentBean" converter="bean"></convert>
+<convert match="com.myfilm.data.Comment" converter="bean"></convert>
 <convert match="com.myfilm.bean.FilmBean" converter="bean"></convert>
 </allow>
 </dwr>
