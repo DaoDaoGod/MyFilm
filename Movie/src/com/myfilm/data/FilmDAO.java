@@ -162,6 +162,24 @@ public class FilmDAO extends HibernateDaoSupport {
 			throw re;
 		}
 	}
+	
+	public List<Film> findByCatalogue(Object[] data, String order) {
+		log.debug("finding Film instance with property:Catalogue" + ", value: "
+				+ data[0] + " " + data[1] + " " + data[2] + " " + data[3] + " "
+				+ order);
+		try {
+
+			String queryString ="from Film as f "
+					+"where f.name in (select m.name from Film as m where m.update between ? and ?)"
+					+ "and f.name in (select ft.film.name from FilmType ft where ft.type.type like ?)"
+					+ "and f.name in (select fp.film.name from FilmPlace fp where fp.place.place like ?)order by f."+order;
+			return getHibernateTemplate().find(queryString, data);
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
+
+	}
 
 	public void attachClean(Film instance) {
 		log.debug("attaching clean Film instance");

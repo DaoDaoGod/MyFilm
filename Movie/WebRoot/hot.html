@@ -47,7 +47,7 @@ var myurl="film-single.html"+"?"+"parm="+id;
 
 </head>
 
-<body onload="init();">
+<body onload="init();islogin();">
  
     <!-- header -->
     <header id="header">
@@ -62,40 +62,104 @@ var myurl="film-single.html"+"?"+"parm="+id;
         </div>
         <nav id="menu" style="margin-left:90px;margin-right:90px;">
             <ul class="clearfix">
-                <li><a href="./index.html" class="current">首页</a>
+                <li><a href="./index.html" class="current" style="font-family:微软雅黑;">首页</a>
                 </li>
-                <li><a href="./hot.html">热门</a>
+                <li><a href="./hot.html" style="font-family:微软雅黑;">热门</a>
                 </li>
-                <li><a href="./classify.html">分类</a>
+                <li><a href="./classify.html" style="font-family:微软雅黑;">分类</a>
                 </li>
-                <li><a href="./rank.html">榜单</a>
+                <li><a href="./rank.html" style="font-family:微软雅黑;">榜单</a>
                 </li>
-                <li><a href="./group.html">圈子</a>
+                <li><a href="./group.html" style="font-family:微软雅黑;">圈子</a>
                 </li>
-                <li><a href="./about.html">关于我们</a>
+                <li><a href="./about.html" style="font-family:微软雅黑;">关于我们</a>
                 </li>
                 <li>
                     <form id="search" class="input-append" >
-
-                    <input class="" id="appendedInputButton" size="16" type="text" value="搜索..." name="search site" onFocus="if(this.value=='Search...') this.value=''" onBlur="if(this.value=='') this.value='...'" />
+                    <input class="" id="appendedInputButton" size="16" type="text" value="搜索..." name="sear" onFocus="if(this.value=='Search...') this.value=''" onBlur="if(this.value=='') this.value='...'" />
                     <input class="btn search-bt" type="submit" name="submit" value="" />
                     </form>
                 </li>
-                <li>
-                    <a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;float:left;"> <i class="icon-user icon-white"></i><font id="nav_nickname"> 登录 </font> 
+                <li id="loginaccount">
+                   
+                    <a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;margin-left:70px;"> <i class="icon-user icon-white"></i> <span style="font-family:微软雅黑;">登录 </span>
                     </a>
+                    
+                </li>
+                <li id="registeraccount">
+                   
+                    <a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;"> <span style="font-family:微软雅黑;"> 注册</span> 
+                    </a>
+                    
                 </li>
                 
-                <li>
-                    <a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;">
-                        <font id="nav_nickname"> 注册</font> 
-                    </a>
-                </li>
-               
             </ul>
         </nav>
 
     </header>
+    <!--login-->
+    <div class="modal hide" id="login1"> <a href="#" class="close" data-dismiss="modal">×</a>
+        <form>
+            <div class="modal-header">
+                <h3>用户登录</h3>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <label class="control-label" for="user">用户名</label>
+                    <div class="controls">
+                        <input id="loginuser" type="text" placeholder="输入用户名" class="span3">
+                       
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">密码</label>
+                    <div class="controls">
+                        <input id="loginpass" type="password" placeholder="输入密码" class="span3">
+               
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit" onclick="login();">登录</button>
+            </div>
+        </div>
+    </div>
+    <!--register-->
+    <div class="modal hide" id="register1"> <a href="#" class="close" data-dismiss="modal">×</a>
+        <form>
+            <div class="modal-header">
+                <h3>新用户注册</h3>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <label class="control-label" for="user">用户名</label>
+                    <div class="controls">
+                        <input id="registeruser" type="text" placeholder="输入用户名" class="span3">
+                    
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">密码</label>
+                    <div class="controls">
+                        <input id="registerpass" type="password" placeholder="输入密码" class="span3">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">确认密码</label>
+                    <div class="controls">
+                        <input id="registerrepass" type="password" placeholder="输入新密码" class="span3">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit" onclick="register();">完成</button>
+            </div>
+        </div>
+    </div>
     <!--login-->
     <div class="modal hide" id="login1"> <a href="#" class="close" data-dismiss="modal">关闭*</a>
         <form>

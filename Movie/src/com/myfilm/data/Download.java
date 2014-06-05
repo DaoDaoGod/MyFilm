@@ -50,7 +50,7 @@ public class Download implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "film_id", nullable = false, insertable = false, updatable = false)
 	public Film getFilm() {
 		return this.film;

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
-		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="com.genuitec.runtime.library/com.genuitec.generic_6.0">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>
@@ -34,5 +29,9 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-logging-1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dwr.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.26-bin.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_10"/>
+	<classpathentry kind="lib" path="C:/Users/LuHao/Documents/MyFilms/search/新建文件夹/IKAnalyzer3.2.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/LuHao/Documents/MyFilms/search/新建文件夹/lucene-core-3.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/LuHao/Documents/MyFilms/search/新建文件夹/lucene-demos-3.0.3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

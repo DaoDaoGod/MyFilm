@@ -132,7 +132,7 @@ public class User implements java.io.Serializable {
 		this.userphoto = userphoto;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<GroupComment> getGroupComments() {
 		return this.groupComments;
 	}
@@ -141,7 +141,7 @@ public class User implements java.io.Serializable {
 		this.groupComments = groupComments;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<UserGroup> getUserGroups() {
 		return this.userGroups;
 	}
@@ -150,7 +150,7 @@ public class User implements java.io.Serializable {
 		this.userGroups = userGroups;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<FilmUser> getFilmUsers() {
 		return this.filmUsers;
 	}

@@ -29,6 +29,7 @@ public class Group implements java.io.Serializable {
 	private Integer droupNumber;
 	private Set<UserGroup> userGroups = new HashSet<UserGroup>(0);
 	private Set<GroupComment> groupComments = new HashSet<GroupComment>(0);
+	private Set<Topic> topics = new HashSet<Topic>(0);
 	private Set<FilmGroup> filmGroups = new HashSet<FilmGroup>(0);
 
 	// Constructors
@@ -45,13 +46,15 @@ public class Group implements java.io.Serializable {
 	/** full constructor */
 	public Group(String groupName, String groupDescription, String groupOwner,
 			Integer droupNumber, Set<UserGroup> userGroups,
-			Set<GroupComment> groupComments, Set<FilmGroup> filmGroups) {
+			Set<GroupComment> groupComments, Set<Topic> topics,
+			Set<FilmGroup> filmGroups) {
 		this.groupName = groupName;
 		this.groupDescription = groupDescription;
 		this.groupOwner = groupOwner;
 		this.droupNumber = droupNumber;
 		this.userGroups = userGroups;
 		this.groupComments = groupComments;
+		this.topics = topics;
 		this.filmGroups = filmGroups;
 	}
 
@@ -119,6 +122,15 @@ public class Group implements java.io.Serializable {
 
 	public void setGroupComments(Set<GroupComment> groupComments) {
 		this.groupComments = groupComments;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "group")
+	public Set<Topic> getTopics() {
+		return this.topics;
+	}
+
+	public void setTopics(Set<Topic> topics) {
+		this.topics = topics;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "group")

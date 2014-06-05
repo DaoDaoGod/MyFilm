@@ -1,5 +1,5 @@
 #MyEclipse Hibernate Properties
-#Mon May 26 19:49:18 CST 2014
+#Sun Jun 01 16:20:13 CST 2014
 genBasicCompId=true
 sessionFactoryName=
 profile=
@@ -7,14 +7,14 @@ daoSFId=sessionFactory
 jndiPath=
 detectM2M=false
 reStrategyClass=
-detectO2O=false
+detectO2O=true
 springDaoFile=src/applicationContext.xml
 useJavaTypes=true
-keyGenerator=
+keyGenerator=identity
 genVersionTag=false
 sessionFactoryId=
 basePersistenceClass=
 genAnnotations=true
 reSettingsFile=
-configFile=/MovieGod/src/hibernate.cfg.xml
+configFile=/MovieStar/src/hibernate.cfg.xml
 createConfigFile=true

@@ -31,6 +31,10 @@
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/ajax-mail.js"></script>
     <script type="text/javascript" src="js/accordion.settings.js"></script>
+    <script type='text/javascript' src='dwr/interface/bm.js'></script>
+    <script type='text/javascript' src='dwr/engine.js'></script>
+    <script type='text/javascript' src='dwr/util.js'></script>
+    <script type="text/javascript" src="bm.js"></script>
     <!--[if lt IE 9]>
     <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <link href="css/ie.css" type="text/css" rel="stylesheet"/>
@@ -39,77 +43,118 @@
 </head>
 
 
-<body>
-    <!-- 
-<section id="top-menu">
-    <div class="container">
+<body onload="islogin();getgroupid();">
+    <!-- header -->
+    <header id="header">
+
         <div class="row">
-            <div class="span6 hidden-phone">
-                <ul class="top-menu">
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="#">Sitemap</a></li>
-                    <li><a href="#">Shorcodes</a></li>
-                    <li><a href="#" class="last">Contact</a></li>
-                </ul>
+            <div class="span5 logo" style="margin-left:110px;">
+                <a href="./index.html">
+                    <img src="images/logo.png" alt="logo" style="width:370px;height:61px;" />
+                </a>
             </div>
-            <div class="span6">
-                <ul class="top-social">
-                    <li><a href="#" class="twitter2"></a></li>
-                    <li><a href="#" class="facebook"></a></li>
-                    <li><a href="#" class="google last"></a></li>
-                </ul>
+            <div class="span8 hidden-phone"></div>
+        </div>
+        <nav id="menu" style="margin-left:90px;margin-right:90px;">
+            <ul class="clearfix">
+                <li><a href="./index.html" class="current" style="font-family:微软雅黑;">首页</a>
+                </li>
+                <li><a href="./hot.html" style="font-family:微软雅黑;">热门</a>
+                </li>
+                <li><a href="./classify.html" style="font-family:微软雅黑;">分类</a>
+                </li>
+                <li><a href="./rank.html" style="font-family:微软雅黑;">榜单</a>
+                </li>
+                <li><a href="./group.html" style="font-family:微软雅黑;">圈子</a>
+                </li>
+                <li><a href="./about.html" style="font-family:微软雅黑;">关于我们</a>
+                </li>
+                <li>
+                    <form id="search" class="input-append" >
+                    <input class="" id="appendedInputButton" size="16" type="text" value="搜索..." name="search site" onFocus="if(this.value=='Search...') this.value=''" onBlur="if(this.value=='') this.value='...'" />
+                    <input class="btn search-bt" type="submit" name="submit" value="" />
+                    </form>
+                </li>
+                <li id="loginaccount">
+                   
+                    <a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;margin-left:70px;"> <i class="icon-user icon-white"></i> <span style="font-family:微软雅黑;">登录 </span>
+                    </a>
+                    
+                </li>
+                <li id="registeraccount">
+                   
+                    <a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;"> <span style="font-family:微软雅黑;"> 注册</span> 
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+
+    </header>
+    <!--login-->
+    <div class="modal hide" id="login1"> <a href="#" class="close" data-dismiss="modal">×</a>
+        <form>
+            <div class="modal-header">
+                <h3>用户登录</h3>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <label class="control-label" for="user">用户名</label>
+                    <div class="controls">
+                        <input id="loginuser" type="text" placeholder="输入用户名" class="span3">
+                       
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">密码</label>
+                    <div class="controls">
+                        <input id="loginpass" type="password" placeholder="输入密码" class="span3">
+               
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit" onclick="login();">登录</button>
             </div>
         </div>
     </div>
-</section>
--->
-    <!-- header -->
-    <header id="header" style="padding-bottom:10px;">
-        <div class="container">
-            <div class="row">
-                <div class="span4 logo">
-                    <a href="./index.html">
-                        <img src="images/logo.png" alt="logo" />
-                    </a>
-                </div>
-                <div class="span8 hidden-phone"></div>
+    <!--register-->
+    <div class="modal hide" id="register1"> <a href="#" class="close" data-dismiss="modal">×</a>
+        <form>
+            <div class="modal-header">
+                <h3>新用户注册</h3>
             </div>
-            <nav id="menu">
-                <ul class="clearfix">
-                    <li><a href="./index.html" class="current">首页</a>
-                    </li>
-                    <li><a href="./hot.html">热门</a>
-                    </li>
-                    <li><a href="./classify.html">分类</a>
-                    </li>
-                    <li><a href="./rank.html">榜单</a>
-                    </li>
-                    <li><a href="./group.html">圈子</a>
-                    </li>
-                    <li><a href="./about.html">关于我们</a>
-                    </li>
-                    <li>
-                        <form id="search" class="input-append" />
-
-                        <input class="" id="appendedInputButton" size="16" type="text" value="搜索..." name="search site" onFocus="if(this.value=='Search...') this.value=''" onBlur="if(this.value=='') this.value='...'" />
-                        <input class="btn search-bt" type="submit" name="submit" value="" />
-                        </form>
-                    </li>
-                    <li>
-                        <a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;margin-left:210px;"> <i class="icon-user icon-white"></i><font id="nav_nickname"> 登录</font> 
-                        </a>
-                    </li>
-                    </li>
-                    <li>
-                        <a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;">
-                            </i><font id="nav_nickname"> 注册</font> 
-                        </a>
-                    </li>
-                    </li>
-                </ul>
-            </nav>
+            <div class="modal-body">
+                <div class="control-group">
+                    <label class="control-label" for="user">用户名</label>
+                    <div class="controls">
+                        <input id="registeruser" type="text" placeholder="输入用户名" class="span3">
+                    
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">密码</label>
+                    <div class="controls">
+                        <input id="registerpass" type="password" placeholder="输入密码" class="span3">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">确认密码</label>
+                    <div class="controls">
+                        <input id="registerrepass" type="password" placeholder="输入新密码" class="span3">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit" onclick="register();">完成</button>
+            </div>
         </div>
-    </header>
+    </div>
     <!--login-->
     <div class="modal hide" id="login1"> <a href="#" class="close" data-dismiss="modal">关闭*</a>
         <form>
@@ -180,19 +225,6 @@
             </div>
         </div>
     </div>
-     <!--对话框-->
-        <div class="modal hide" id="myModal">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"  >&times;</button>
-        <h3>亲爱的xxx</h3>
-      </div>
-      <div class="modal-body">
-        <p>欢迎加入xxx小组</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#"  data-dismiss="modal" class="btn">关闭</a>
-      </div>
-      </div>
     <!--container-->
     <div class="container">
 
@@ -200,14 +232,14 @@
             <div class="span1" style="margin-left:0;">
                 <img src="example/beauty.jpg" width="60" height="60" style="margin-bottom:10px">
             </div>
-            <div class="span2" style="margin-left:10px;margin-top:5px;">
+            <div id="groupname" class="span2" style="margin-left:10px;margin-top:5px;">
                 <h1>那些年，北漂</h1>
             </div>
             <div class="span1" style="margin-left:0;margin-top:15px;">
-               <a data-toggle="modal" data-target="#myModal" href="#">+加入圈子</a>
+               <a style="cursor: pointer;" onclick="joingroup();">+加入圈子</a>
             </div>
 
-            <div class="span7" style="margin-left:0;background:#FFECEC;">
+            <div id="groupdescription"class="span7" style="margin-left:0;background:#FFECEC;">
                 <p>
                     创建于2012-11-21 组长：大闸蟹
                     <br>淘宝买家一块儿分享心仪好店。 大家把自己交易过的淘宝好店都晒出来，一块分享。流行服饰、化妆品、数码、都可以。大家的推荐一定要是自己交易过，确实觉得不错的，最好写上比较详细的推荐理由。 各自把压箱底的好网店翻出来晒晒~~~~~ --------------------------------------------------------------------------------------- 本组地址：www.douban.com/group/443356
@@ -222,8 +254,10 @@
                     <div class="span5">
                         <h1>最新话题</h1>
                     </div>
-                    <div class="span2" style="margin-top:8px;">
+                    <div id="createtopic" class="span2" style="margin-top:8px;">
+                       <div>
                         <a  href="createtopic.html">+发表话题</a>
+                        </div>
                     </div>
                 </div>
                 <hr style="background:#D3D3D3">
@@ -232,6 +266,8 @@
                         <div class="row" style="margin-left:0;">
                             话题
                         </div>
+                        <div id="topicname">
+                        <div>
                         <div class="row" style="margin-left:0;">
                            <a href="topic.html"> 那些年，我们追过的女孩</a>
                         </div>
@@ -247,12 +283,15 @@
                         <div class="row" style="margin-left:0;">
                             <a href="topic.html"> 那些年，我们追过的女孩</a>
                         </div>
-
+                        </div></div>
                     </div>
                     <div class="span1">
+             
                         <div class="row" style="margin-left:0;">
                             作者
                         </div>
+                        <div id="topicusername">
+                        <div>
                         <div class="row" style="margin-left:0;">
                             王伟
                         </div>
@@ -268,31 +307,15 @@
                         <div class="row" style="margin-left:0;">
                             王伟
                         </div>
-                    </div>
-                    <div class="span1">
-                        <div class="row" style="margin-left:0;">
-                            回应
                         </div>
-                        <div class="row" style="margin-left:0;">
-                            11
-                        </div>
-                        <div class="row" style="margin-left:0;">
-                            11
-                        </div>
-                        <div class="row" style="margin-left:0;">
-                            11
-                        </div>
-                        <div class="row" style="margin-left:0;">
-                            11
-                        </div>
-                        <div class="row" style="margin-left:0;">
-                            11
                         </div>
                     </div>
                     <div class="span1">
                         <div class="row" style="margin-left:0;">
                             时间
                         </div>
+                        <div id="topicaddtime">
+                        <div>
                         <div class="row" style="margin-left:0;">
                             2013/01/01
                         </div>
@@ -307,6 +330,8 @@
                         </div>
                         <div class="row" style="margin-left:0;">
                             2013/01/01
+                        </div>
+                        </div>
                         </div>
                     </div>
                 </div>

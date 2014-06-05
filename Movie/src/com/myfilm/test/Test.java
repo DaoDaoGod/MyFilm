@@ -1,8 +1,11 @@
 package com.myfilm.test;
 
+import com.myfilm.search.SearchLogic;
+
 public class Test {
-	public String getMyName()
+	public static void main(String [] args)
 	{
-		return "Hello Luhao";
+		SearchLogic logic = new SearchLogic();   
+		logic.getsearchvalue("ÌìÌ¨");
 	}
 }

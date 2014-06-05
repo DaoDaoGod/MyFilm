@@ -1,10 +1,10 @@
 package com.myfilm.data;
 
 import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -12,10 +12,6 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-
-
-
 
 /**
  * Comment entity. @author MyEclipse Persistence Tools
@@ -32,7 +28,7 @@ public class Comment implements java.io.Serializable {
 	private String email;
 	private String username;
 	private String content;
-	private Timestamp addTime= new Timestamp(System.currentTimeMillis());
+	private Timestamp addTime=new Timestamp(new Date().getDate());
 
 	// Constructors
 

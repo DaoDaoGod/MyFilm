@@ -1,0 +1,257 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+
+    <link href="http://cdn.bootcss.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link href="css/prettyPhoto.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+    <script type='text/javascript' src='dwr/interface/bm.js'></script>
+    <script type='text/javascript' src='dwr/engine.js'></script>
+    <script type='text/javascript' src='dwr/util.js'></script>
+    <script type="text/javascript" src="bm.js"></script>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+</head>
+
+<body onload="islogin();userinit();">
+    <header id="header">
+
+        <div class="row">
+            <div class="span5 logo" style="margin-left:110px;">
+                <a href="./index.html">
+                    <img src="images/logo.png" alt="logo" style="width:370px;height:61px;" />
+                </a>
+            </div>
+            <div class="span8 hidden-phone"></div>
+        </div>
+        <nav id="menu" style="margin-left:90px;margin-right:90px;">
+            <ul class="clearfix">
+                <li><a href="./index.html" class="current" style="font-family:微软雅黑;">首页</a>
+                </li>
+                <li><a href="./hot.html" style="font-family:微软雅黑;">热门</a>
+                </li>
+                <li><a href="./classify.html" style="font-family:微软雅黑;">分类</a>
+                </li>
+                <li><a href="./rank.html" style="font-family:微软雅黑;">榜单</a>
+                </li>
+                <li><a href="./group.html" style="font-family:微软雅黑;">圈子</a>
+                </li>
+                <li><a href="./about.html" style="font-family:微软雅黑;">关于我们</a>
+                </li>
+                <li>
+                    <form id="search" class="input-append">
+                        <input class="" id="appendedInputButton" size="16" type="text" value="搜索..." name="search site" onFocus="if(this.value=='Search...') this.value=''" onBlur="if(this.value=='') this.value='...'" />
+                        <input class="btn search-bt" type="submit" name="submit" value="" />
+                    </form>
+                </li>
+                <li id="loginaccount">
+
+                    <a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;margin-left:70px;"> <i class="icon-user icon-white"></i>  <span style="font-family:微软雅黑;">登录 </span>
+                    </a>
+
+                </li>
+                <li id="registeraccount">
+
+                    <a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;"> <span style="font-family:微软雅黑;"> 注册</span> 
+                    </a>
+
+                </li>
+
+            </ul>
+        </nav>
+
+    </header>
+    <!--login-->
+    <div class="modal hide" id="login1"> <a href="#" class="close" data-dismiss="modal">×</a>
+        <form>
+            <div class="modal-header">
+                <h3>用户登录</h3>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <label class="control-label" for="user">用户名</label>
+                    <div class="controls">
+                        <input id="loginuser" type="text" placeholder="输入用户名" class="span3">
+
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">密码</label>
+                    <div class="controls">
+                        <input id="loginpass" type="password" placeholder="输入密码" class="span3">
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit" onclick="login();">登录</button>
+            </div>
+        </div>
+    </div>
+    <!--register-->
+    <div class="modal hide" id="register1"> <a href="#" class="close" data-dismiss="modal">×</a>
+        <form>
+            <div class="modal-header">
+                <h3>新用户注册</h3>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <label class="control-label" for="user">用户名</label>
+                    <div class="controls">
+                        <input id="registeruser" type="text" placeholder="输入用户名" class="span3">
+
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">密码</label>
+                    <div class="controls">
+                        <input id="registerpass" type="password" placeholder="输入密码" class="span3">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user">确认密码</label>
+                    <div class="controls">
+                        <input id="registerrepass" type="password" placeholder="输入新密码" class="span3">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit" onclick="register();">完成</button>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top:-40px;margin-left:90px;">
+        <div class="tabbable tabs-left">
+            <ul class="nav nav-tabs" style="background: #dfdfdf;">
+                <li>
+                    <img src="example/beauty1.jpg" style="weight:200px;height:200px;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;">
+                </li>
+                <li class="active" style="margin-left:10px;"><a href="#lA" data-toggle="tab"><i class="icon-home"></i>&nbsp;主页</a>
+                </li>
+                <li>
+                    <a href="#lB" style="margin-left:10px;" data-toggle="tab"> <i class="icon-user"></i>&nbsp;个人信息</a>
+                </li>
+                <li><a href="#lC" style="margin-left:10px;" data-toggle="tab" onclick="showlikemovie();"><i class="icon-heart"></i>&nbsp;喜欢</a>
+                </li>
+                <li><a href="#lD" style="margin-left:10px;" data-toggle="tab"><i class="icon-time"></i>&nbsp;计划</a>
+                </li>
+                <li><a href="#lE" style="margin-left:10px;" data-toggle="tab"><i class=" icon-check"></i>&nbsp;已看</a>
+                </li>
+                <li><a href="#lF" style="margin-left:10px;" data-toggle="tab"><i class="icon-ok-circle"></i>&nbsp;圈子</a>
+                </li>
+
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="lA">
+                    <div>
+                        <span class="row"><span style="font-size:16pt;">基本信息：</span></span>
+                         <span class="row"><span style="font-size:10pt;margin-left:200px;">昵称：</span><span id="shownickname"></span></span>
+                          <span class="row"><span style="font-size:10pt;margin-left:200px;">邮箱：</span><span id="showemail"></span></span>
+                         <span class="row"><span style="font-size:10pt;margin-left:200px;">生日：</span><span id="showbirthday"></span></span>
+                        <hr style="background:#D3D3D3;" />
+           <!--              <span class="row"><span style="font-size:16pt;">推荐电影：</span></span>
+                          <span style="margin-left:200px">电影名称</span><span style="margin-left:300px">电影详情</span> -->
+                    </div>
+                </div>
+                <div class="tab-pane" id="lB">
+                    <span class="row" style="font-size:16pt;">基本信息：</span>
+                    <span class="row"><span >昵称:</span><span><input type="text" name="name"   value="" id="usernickname"></span></span>
+              
+                    <span class="row">
+                     <span >性别:</span>
+              <span>  
+              <select class="selectpicker span2" data-size="false" style="width:218px;" id="usergender">  
+              <option value="1">男</option>  
+              <option value="2">女</option>  
+             </select>  
+             </span>
+                    </span>
+                    <span class="row"><span >生日:</span></span>
+                      <span class="row">
+                     
+                     <span>&nbsp;&nbsp;&nbsp;年:&nbsp;&nbsp;</span><span><input type="text" style="width:40px;" id="userbiryear"></span>
+                     <span>&nbsp;&nbsp;&nbsp;&nbsp;月:</span><span><input type="text" style="width:40px;" id="userbirmonth"></span>
+                     <span>&nbsp;&nbsp;&nbsp;&nbsp;日:</span><span><input type="text" style="width:40px;" id="userbirday"></span>
+                 
+                    </span>
+                    <span class="row"><input type="button" value="保存修改" style="margin-left:90px;" onclick="updateinfo();"></span>
+                    
+                </div>
+                <div class="tab-pane" id="lC">
+                    <span class="row">
+                    <span style="margin-left:200px">电影名称</span><span style="margin-left:300px">电影上映日期</span>
+                    </span>
+                    <div id="likemovie">
+                    <div>
+                     <span class="row">
+                    <span style="margin-left:200px"><a href="#">美国队长</a></span><span style="margin-left:300px">2013-09-09</span>
+                    </span>
+                    </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="lD">
+                    <span class="row">
+                    <span style="margin-left:200px">电影名称</span><span style="margin-left:300px">电影上映日期</span>
+                    <div id="planmovie">
+                    <div>
+                     <span class="row">
+                    <span style="margin-left:200px"><a href="#">美国队长</a></span><span style="margin-left:300px">2013-09-09</span>
+                    </span>
+                    </div>
+                    </div>
+                    </span>
+                </div>
+                <div class="tab-pane" id="lE">
+                    <span class="row">
+                    <span style="margin-left:200px">电影名称</span><span style="margin-left:300px">电影上映日期</span>
+                    </span>
+                    <div id="watchmovie">
+                    <div>
+                     <span class="row">
+                    <span style="margin-left:200px"><a href="#">美国队长</a></span><span style="margin-left:300px">2013-09-09</span>
+                    </span>
+                    </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="lF">
+                    <span class="row">
+                    <span style="font-size:16pt;">我的圈子:</span>
+                    </span>
+                     <span class="row">
+                    <span style="margin-left:200px">圈子名称</span><span style="margin-left:300px">是否退出</span>
+                    </span>
+                    <div id="groupshow">
+                    <div>
+                     <span class="row">
+                    <span style="margin-left:200px"><a href="#">美国队长</a></span><span style="margin-left:300px">2013-09-09</span>
+                    </span>
+                    </div>
+                    </div>
+                    <hr style="background:#D3D3D3;" />
+                     <span class="row">
+                    <span style="font-size:16pt;">创建圈子:</span>
+                    </span>
+                    <span class="row"><span >圈子名称:</span><span><input type="text" id="groupname"></span></span>
+                    <span class="row"><span >圈子简介:</span><span><input type="text" id="groupdes"></span></span>
+                    <span class="row"><span><input class="btn" type="button" value="创建" style="margin-left:120px;" onclick="createnewgroup();"></span></span>
+                </div>
+            </div>
+        </div>
+        <!-- /tabbable -->
+
+    </div>
+</body>
+
+</html>

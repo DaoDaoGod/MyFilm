@@ -44,7 +44,7 @@
      
 </head>
 
-<body onload="getparm();islogin();" style="font-family:微软雅黑;">
+<body onload="getparm();islogin();">
     <!-- header -->
     <header id="header">
 
@@ -224,7 +224,7 @@
                             <td id="filmupdate"><div>2014-4-25</div></td>
                             </tr><tr>
                             <td class="span2"><span class="x-m-label">片长</span></td>
-                            <td id="filmlength"><div>146min<div></td>
+                            <td id="filmlength"><div>146min</div></td>
                             </tr><tr>
                             <td class="span2"><span class="x-m-label">别名</span></td>
                             <td id="filmothername"><div>同桌的你</div></td>
@@ -233,11 +233,11 @@
                             <td id="dblink"><div>豆瓣： <a rel="nofollow" href="http://movie.douban.com/subject/6874456/" target="_blank" data-toggle="tooltip" class="x-tooltip" title="豆瓣上的信息"><span class="badge" style="color: green; font-weight: bold;">7.3</span></a></div></td>
                             </tr><tr>
                             <td colspan="2"><div class="btn-group x-usermovie-controls">
-                            <a href="#" class="mark btn x-tooltip" title="标记为喜欢的电影" data-toggle="tooltip" data-id="5071af3890d7a909a3ff0b57" data-type="like">
+                            <a onclick="addlikestate(1);"  class="mark btn x-tooltip" title="标记为喜欢的电影" data-toggle="tooltip" data-id="5071af3890d7a909a3ff0b57" data-type="like">
                            <i class="icon-heart"></i>  <span>喜欢</span></a>
-                           <a href="#" class="mark btn x-tooltip" title="加入计划后可以获得资源更新的通知" data-toggle="tooltip" data-id="5071af3890d7a909a3ff0b57" data-type="plan">
+                           <a onclick="addwatchstate(1);" class="mark btn x-tooltip" title="加入计划后可以获得资源更新的通知" data-toggle="tooltip" data-id="5071af3890d7a909a3ff0b57" data-type="plan">
                            <i class="icon-time"></i> <span>计划</span></a>
- <a href="#" class="mark btn x-tooltip" title="标记为看过的电影" data-toggle="tooltip" data-id="5071af3890d7a909a3ff0b57" data-type="seen">
+ <a onclick="addwatchstate(2);" class="mark btn x-tooltip" title="标记为看过的电影" data-toggle="tooltip" data-id="5071af3890d7a909a3ff0b57" data-type="seen">
                            <i class="icon-check"></i>  <span>已看</span></a></div></td>
                            </tr><tr>
                            <td colspan="2"> 

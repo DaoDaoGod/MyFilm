@@ -67,7 +67,7 @@ public class Prize implements java.io.Serializable {
 		this.prizename = prizename;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "prize")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "prize")
 	public Set<FilmPrize> getFilmPrizes() {
 		return this.filmPrizes;
 	}

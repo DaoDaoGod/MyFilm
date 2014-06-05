@@ -18,6 +18,26 @@
  <include method="isLogin"/>
  <include method="getUserById"/>
  <include method="addNewComment"/> 
+ <include method="getGroupById"/> 
+ <include method="getTopicById"/>
+ <include method="addNewTopicComment"/>
+ <include method="addNewTopic"/>
+ <include method="getNewestTopicbypage"/>
+ <include method="getNewestGroup"/>
+ <include method="exitlogin"/>
+ <include method="joinAgroup"/>
+ <include method="getFilmbyCondition"/>
+ <include method="getFilmbyConditionbypage"/>
+ <include method="addFilmlikestate"/>
+ <include method="addFilmwatchsate"/>
+ <include method="updateuserinfo"/>
+  <include method="getuserwatchmovie"/> 
+   <include method="getuserlikemovie"/> 
+   <include method="getuserplanmovie"/>
+   <include method="createAgroup"/> 
+   <include method="getUserGroups"/>
+   <include method="getUserinfo"/>
+   <include method="getSearchValue"/>
  
 </create>
 <convert match="com.myfilm.data.Film" converter="class"></convert>
@@ -27,5 +47,9 @@
 <convert match="com.myfilm.bean.CommentBean" converter="bean"></convert>
 <convert match="com.myfilm.data.Comment" converter="bean"></convert>
 <convert match="com.myfilm.bean.FilmBean" converter="bean"></convert>
+<convert match="com.myfilm.bean.GroupBean" converter="bean"></convert>
+<convert match="com.myfilm.data.Topic" converter="bean"></convert>
+<convert match="com.myfilm.bean.TopicBean" converter="bean"></convert>
+<convert match="com.myfilm.bean.TopicCommentBean" converter="bean"></convert>
 </allow>
 </dwr>

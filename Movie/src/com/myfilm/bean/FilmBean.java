@@ -115,7 +115,14 @@ public class FilmBean {
 	private Set<Comment> commentSet;
 	private Set<CommentBean> comments;
 	private List<CommentBean> commentlist;
+	private String filmlink;
 
+	public String getFilmlink() {
+		return filmlink;
+	}
+	public void setFilmlink(String filmlink) {
+		this.filmlink = filmlink;
+	}
 	public List<CommentBean> getCommentlist() {
 		return commentlist;
 	}

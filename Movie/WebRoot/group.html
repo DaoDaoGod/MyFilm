@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
+
 <html lang="en">
-<!--<![endif]-->
+
 
 <head>
-    <meta name="viewport" content="width=100%; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;" />
     <link rel="icon" href="images/favicon.png" type="image/png" />
     <link rel="shortcut icon" href="images/favicon.png" type="image/png" />
     <title>首页</title>
@@ -31,14 +27,14 @@
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/ajax-mail.js"></script>
     <script type="text/javascript" src="js/accordion.settings.js"></script>
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <link href="css/ie.css" type="text/css" rel="stylesheet"/>
-    <![endif]-->
+    <script type='text/javascript' src='dwr/interface/bm.js'></script>
+    <script type='text/javascript' src='dwr/engine.js'></script>
+    <script type='text/javascript' src='dwr/util.js'></script>
+    <script type="text/javascript" src="bm.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
-<body>
+<body onload="islogin();shownewtopic();">
     <!-- 
 <section id="top-menu">
     <div class="container">
@@ -88,29 +84,31 @@
                     <li><a href="./about.html">关于我们</a>
                     </li>
                     <li>
-                        <form id="search" class="input-append" />
+                        <form id="search" class="input-append">
 
                         <input class="" id="appendedInputButton" size="16" type="text" value="搜索..." name="search site" onFocus="if(this.value=='Search...') this.value=''" onBlur="if(this.value=='') this.value='...'" />
                         <input class="btn search-bt" type="submit" name="submit" value="" />
                         </form>
                     </li>
-                    <li>
-                        <a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;margin-left:210px;"> <i class="icon-user icon-white"></i><font id="nav_nickname"> 登录</font> 
-                        </a>
-                    </li>
-                    </li>
-                    <li>
-                        <a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;">
-                            </i><font id="nav_nickname"> 注册</font> 
-                        </a>
-                    </li>
-                    </li>
+                <li id="loginaccount">
+                   
+                    <a href="#login1" id="login" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;margin-left:70px;"> <i class="icon-user icon-white"></i> <span style="font-family:微软雅黑;">登录 </span>
+                    </a>
+                    
+                </li>
+                <li id="registeraccount">
+                   
+                    <a href="#register1" id="register" data-toggle="modal" class="login-register-dialog" style="cursor:pointer;"> <span style="font-family:微软雅黑;"> 注册</span> 
+                    </a>
+                    
+                </li>
+                    
                 </ul>
             </nav>
         </div>
     </header>
     <!--login-->
-    <div class="modal hide" id="login1"> <a href="#" class="close" data-dismiss="modal">关闭*</a>
+    <div class="modal hide" id="login1"> <a href="#" class="close" data-dismiss="modal">×</a>
         <form>
             <div class="modal-header">
                 <h3>用户登录</h3>
@@ -119,29 +117,27 @@
                 <div class="control-group">
                     <label class="control-label" for="user">用户名</label>
                     <div class="controls">
-                        <input id="user" type="text" placeholder="输入用户名" class="span3">
-                        <!-- palceholder用于文本框中显示提示性字体-->
-                        <p class="help-blaock">在这里输入用户名</p>
+                        <input id="loginuser" type="text" placeholder="输入用户名" class="span3">
+                       
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="user">密码</label>
                     <div class="controls">
-                        <input id="user" type="text" placeholder="输入密码" class="span3">
-                        <!-- palceholder用于文本框中显示提示性字体-->
-                        <p class="help-blaock">在这里输入密码</p>
+                        <input id="loginpass" type="password" placeholder="输入密码" class="span3">
+               
                     </div>
                 </div>
             </div>
         </form>
         <div class="modal-footer">
             <div class="form-actions">
-                <button class="btn btn-primary" type="submit">登录</button>
+                <button class="btn btn-primary" type="submit" onclick="login();">登录</button>
             </div>
         </div>
     </div>
     <!--register-->
-    <div class="modal hide" id="register1"> <a href="#" class="close" data-dismiss="modal">关闭*</a>
+    <div class="modal hide" id="register1"> <a href="#" class="close" data-dismiss="modal">×</a>
         <form>
             <div class="modal-header">
                 <h3>新用户注册</h3>
@@ -150,43 +146,39 @@
                 <div class="control-group">
                     <label class="control-label" for="user">用户名</label>
                     <div class="controls">
-                        <input id="user" type="text" placeholder="输入用户名" class="span3">
-                        <!-- palceholder用于文本框中显示提示性字体-->
-                        <p class="help-blaock">在这里输入用户名</p>
+                        <input id="registeruser" type="text" placeholder="输入用户名" class="span3">
+                    
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="user">密码</label>
                     <div class="controls">
-                        <input id="user" type="text" placeholder="输入密码" class="span3">
-                        <!-- palceholder用于文本框中显示提示性字体-->
-                        <p class="help-blaock">在这里输入密码</p>
+                        <input id="registerpass" type="password" placeholder="输入密码" class="span3">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="user">确认密码</label>
                     <div class="controls">
-                        <input id="user" type="text" placeholder="输入新密码" class="span3">
-                        <!-- palceholder用于文本框中显示提示性字体-->
-                        <p class="help-blaock">在这里确认密码</p>
+                        <input id="registerrepass" type="password" placeholder="输入新密码" class="span3">
                     </div>
                 </div>
             </div>
         </form>
         <div class="modal-footer">
             <div class="form-actions">
-                <button class="btn btn-primary" type="submit">完成</button>
+                <button class="btn btn-primary" type="submit" onclick="register();">完成</button>
             </div>
         </div>
     </div>
     <!--container-->
     <div class="container">
         <h1>圈子热评</h1>
-        <div class="span8">
+        <div id="topiclist"class="span8">
             <div class="row">
+             
                 <h5>
                 <a href="group-single.html">今天是个好日子</a>
-            </h5>
+                </h5>
                 <div class="row">
                     <div class="span1">
                         <img src="example/beauty.jpg">
@@ -199,6 +191,7 @@
 
                 <p>来自<a href="group-single.html">北方的一匹狼</a>&nbsp;&nbsp;&nbsp;3分钟前</p>
                 <hr style="background:#D3D3D3;" />
+                
             </div>
             <div class="row">
                 <h5>
@@ -302,26 +295,26 @@
       </div>
 
         <div class="span3 row">
-            <div>
+            
             <h2>值得加入的圈子</h2>
+            <div id="grouplist">
+            <div>
             <hr style="background:#D3D3D3;" />
             <span class="span1">
             <img src="example/beauty.jpg" width="50px" height="50px">
             </span>
-            <div class="row">
-            
+            <div class="row"> 
             <span class=" inline" style="font-size:125%;margin-left:10px;">
              <a href="group-single.html">那些年，北漂</a>
             </span>
              <br/>
-         
-               
              <div class="inline" style="margin-top:10px;">
               <a href="group-single.html">12334</a> 成员&nbsp;&nbsp; <a data-toggle="modal" data-target="#myModal" href="#">+加入圈子</a>
             </div>
             </div>
              </div>
              <div>
+             
             <hr style="background:#D3D3D3;" />
             <span class="span1">
             <img src="example/beauty.jpg" width="50px" height="50px">
@@ -447,7 +440,7 @@
             </div>
             </div>
              </div>
-            
+            </div>
             
             
             
